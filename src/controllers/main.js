@@ -23,6 +23,7 @@ const routes = [
 const defaultRoute = "/";
 const root = document.getElementById("root");
 
+
 function navigateTo(hash) {
   const route = routes.find((routeFound) => routeFound.path === hash);
 
@@ -30,21 +31,26 @@ function navigateTo(hash) {
     window.history.pushState(
       {},
       route.path,
+
       window.location.origin + route.path
+
     );
 
     if (root.firstChild) {
       root.removeChild(root.firstChild);
+
     }
     root.appendChild(route.component(navigateTo));
   } else if (hash !== '/error') {
     navigateTo("/error");
+
   }
 }
 
 window.onpopstate = () => {
   navigateTo(window.location.pathname);
 };
+
 navigateTo(window.location.pathname || defaultRoute);
 
 console.log(navigateTo('/views/login'));
