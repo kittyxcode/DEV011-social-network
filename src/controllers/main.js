@@ -1,53 +1,55 @@
 // Este es el punto de entrada de tu aplicacion
 
-import { myFunction } from "./lib/index.js";
+/* import { myFunction } from "./lib/index.js";
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs } from "firebase/firestore"; */
 
-myFunction();
+//myFunction();
 
-
-import {login} from './view.js';
+import { login } from '../views/login.js';
+import { createAcount } from '../views/createAcount.js';
+import { error } from '../views/error.js';
+import { home } from '../views/home.js';
 
 const routes = [
   { path: '/', component: login },
-  { path: '/login', component: login },
-//   { path: '/error', component: error },
+  { path: '/login.js', component: login },
+  { path: '/error.js', component: error },
+  { path: '/createAcount', component: createAcount },
+  { path: '/home', component: home },
 ];
 
-const defaultRoute = '/';
-const root = document.getElementById('root');
+const defaultRoute = "/";
+const root = document.getElementById("root");
 
 function navigateTo(hash) {
   const route = routes.find((routeFound) => routeFound.path === hash);
-  
+
   if (route && route.component) {
     window.history.pushState(
       {},
       route.path,
-      window.location.origin + route.path,
+      window.location.origin + route.path
     );
 
     if (root.firstChild) {
       root.removeChild(root.firstChild);
     }
-
     root.appendChild(route.component(navigateTo));
-   } else {navigateTo('/');}
-    
-
+  } else if (hash !== '/error') {
+    navigateTo("/error");
+  }
 }
-  
-
 
 window.onpopstate = () => {
   navigateTo(window.location.pathname);
 };
+navigateTo(window.location.pathname || defaultRoute);
 
-navigateTo(window.location.pathname);
+console.log(navigateTo('/views/login'));
 
-const firebaseApp = initializeApp({
+/* const firebaseApp = initializeApp({
   apiKey: "AIzaSyA8-Scf_mqMNockCk0Q9ah1k5eUg09sBko",
   authDomain: "maryapp-011.firebaseapp.com",
   projectId: "maryapp-011",
@@ -62,7 +64,6 @@ firebase.initializeApp(firebaseApp);
 const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
 
-
 document.querySelector(".blabla").addEventListener("click", (e) => {
   firebase
     .auth()
@@ -70,5 +71,4 @@ document.querySelector(".blabla").addEventListener("click", (e) => {
     .then(() => {
       console.log('holahola');
     });
-});
-
+}); */
