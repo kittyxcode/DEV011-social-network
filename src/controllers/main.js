@@ -14,14 +14,15 @@ import { home } from '../views/home.js';
 
 const routes = [
   { path: '/', component: login },
-  { path: '/views/login.js', component: login },
-  { path: '/views/error.js', component: error },
-  { path: '/views/createAcount', component: createAcount },
-  { path: '/views/home', component: home },
+  { path: '/login.js', component: login },
+  { path: '/error.js', component: error },
+  { path: '/createAcount', component: createAcount },
+  { path: '/home', component: home },
 ];
 
-const defaultRoute = '/';
-const root = document.getElementById('root');
+const defaultRoute = "/";
+const root = document.getElementById("root");
+
 
 function navigateTo(hash) {
   const route = routes.find((routeFound) => routeFound.path === hash);
@@ -30,19 +31,19 @@ function navigateTo(hash) {
     window.history.pushState(
       {},
       route.path,
-      window.location.origin + route.path,
+
+      window.location.origin + route.path
+
     );
 
     if (root.firstChild) {
       root.removeChild(root.firstChild);
-      root.appendChild(root.firstChild);
-      navigateTo('/views/home');
-      root.appendChild(route.component(navigateTo('/views/home')));
-    }
 
+    }
     root.appendChild(route.component(navigateTo));
-  } else {
-    navigateTo('/view/error');
+  } else if (hash !== '/error') {
+    navigateTo("/error");
+
   }
 }
 

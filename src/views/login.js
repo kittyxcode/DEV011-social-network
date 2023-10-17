@@ -2,25 +2,31 @@
 export function login(navigateTo) {
   const section = document.createElement('section');
   const imagen = document.createElement('img');
+
+        imagen.className = 'logo'
   const titleUser = document.createElement('h4');
   const titlePass = document.createElement('h4');
+  const buttonCreate = document.createElement('button');
+
   const form = document.createElement('form');
   const inputUser = document.createElement('input');
   const inputPass = document.createElement('input');
   const buttonLogin = document.createElement('button');
   const text = document.createElement('p');
   const googleLogo = document.createElement('img');
-  const buttonCreate = document.createElement('button');
 
-  imagen.src = '/img/Logo___2_-removebg-preview (1).png';
-  googleLogo.src = '/img/Logo___2_-removebg-preview (1).png';
+  googleLogo.className = 'googleImg'
+
+  imagen.src = './img/logo.png';
+  googleLogo.src = './img/google.png';
   buttonLogin.textContent = 'login';
   buttonCreate.textContent = 'Create a New Account';
   buttonLogin.addEventListener('click', () => {
-    navigateTo('/views/home');
+    navigateTo('/home');
   });
   buttonCreate.addEventListener('click', () => {
-    navigateTo('/views/createAcount');
+    navigateTo('/createAcount');
+
   });
 
   titleUser.textContent = 'Username';
@@ -28,7 +34,9 @@ export function login(navigateTo) {
   text.textContent = 'Or login With';
 
   form.append(inputUser, inputPass, buttonLogin);
-  section.append(titleUser, titlePass, form, buttonLogin, buttonCreate);
+
+  section.append(imagen,titleUser, titlePass, form, buttonLogin,text, buttonCreate, googleLogo);
+
   return section;
 }
 

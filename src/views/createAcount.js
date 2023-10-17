@@ -11,14 +11,16 @@ export function createAcount(navigateTo) {
   const inputPass = document.createElement('input');
   const buttonSingUp = document.createElement('button');
 
-  imagen.src = '/srcimgLogo___2_-removebg-preview (1).png';
-  buttonSingUp.textContent = 'SingUp';
-  buttonSingUp.addEventListener('click', () => {
-    navigateTo('/views/home');
-  });
 
+  imagen.src = './img/logo.png';
+  buttonSingUp.textContent = 'Sing Up';
+  buttonSingUp.addEventListener('click', () => {
+    navigateTo('/home');
+  });
+  buttonBack.textContent ='<-'
   buttonBack.addEventListener('click', () => {
-    navigateTo('/views/login');
+    navigateTo('/login');
+
   });
 
   email.textContent = 'Enter Email Id';
@@ -26,7 +28,9 @@ export function createAcount(navigateTo) {
   titlePass.textContent = 'Create Password';
 
   form.append(inputUser, inputPass, inputEmail, buttonSingUp);
-  section.append(titleUser, titlePass, form, email, buttonBack);
+
+  section.append(imagen,titleUser, titlePass, form, email, buttonBack);
+
   return section;
 }
 

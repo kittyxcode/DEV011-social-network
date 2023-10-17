@@ -1,22 +1,21 @@
-/* * {
+ /* * {
     font-family: -apple-system, BlinkMacSystemFont, "San Francisco", Helvetica, Arial, sans-serif;
     font-weight:  300; 
     margin:  0; 
 }	
-
-div {
+/* 
+#root {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     
+} */
+
+/* .googleImg{
+  width: 1em;
 }
 
-.logo{
-    display: flex;
-    width: 16em;
-    margin-top: 3.5em;
-}
 body {
   background:  #C6D5C3; 
 }
@@ -58,3 +57,26 @@ input {
   position:  relative; 
   margin-bottom:  10px; 
 } */
+
+@media screen and (max-width: 390px) {
+
+  #root {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5em;
+
+  }
+  .logo{
+    width: 12em;
+    display: flex;
+  }
+
+  .googleImg{
+    width: 1em;
+  }
+
+}
