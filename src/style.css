@@ -1,0 +1,60 @@
+/* * {
+    font-family: -apple-system, BlinkMacSystemFont, "San Francisco", Helvetica, Arial, sans-serif;
+    font-weight:  300; 
+    margin:  0; 
+}	
+
+div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.logo{
+    display: flex;
+    width: 16em;
+    margin-top: 3.5em;
+}
+body {
+  background:  #C6D5C3; 
+}
+h4 {
+  font-size:  24px; 
+  font-weight:  600; 
+  color:  #000; 
+  opacity:  .85; 
+}
+label {
+  font-size: 1.3em; 
+  color:  #000;
+  position: absolute;
+  left:0;
+}
+
+button {
+  width:  auto;
+  min-width:  100px;
+  border-radius:  24px; 
+  text-align:  center; 
+  padding:  15px 40px;
+  margin-top:  5px; 
+}
+
+input {
+  font-size:  20px; 
+  border:  none;  
+  border-bottom: solid 3px #718C6E;
+  background: transparent;
+  min-width:  280px; 
+  box-sizing:  border-box; 
+  transition:  all .3s linear; 
+  color: 24342B; 
+  font-weight:  400; 
+  margin-top: 5em;
+}
+.floating-label {
+  position:  relative; 
+  margin-bottom:  10px; 
+} */
