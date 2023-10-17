@@ -1,3 +1,4 @@
+//hola
 export function login(navigateTo) {
   const section = document.createElement('section');
   const imagen = document.createElement('img');
