@@ -1,5 +1,6 @@
 //hola
 export function login(navigateTo) {
+
   const section = document.createElement("section");
   section.className = "sectionlogin";
   const imagen = document.createElement("img");
@@ -20,6 +21,7 @@ export function login(navigateTo) {
   const googleLogo = document.createElement("img");
   googleLogo.className = "googleImg";
 
+
   imagen.src = "./img/logo.png";
   googleLogo.src = "./img/google.png";
   buttonLogin.textContent = "login";
@@ -27,8 +29,11 @@ export function login(navigateTo) {
   buttonLogin.addEventListener("click", () => {
     navigateTo("/home");
   });
-  buttonCreate.addEventListener("click", () => {
-    navigateTo("/createAcount");
+
+  buttonCreate.addEventListener('click', () => {
+    navigateTo('/createAcount');
+
+
   });
 
   titleUser.textContent = "Username";
@@ -44,6 +49,7 @@ export function login(navigateTo) {
     buttonCreate,
     googleLogo
   );
+
   return section;
 }
 

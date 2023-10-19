@@ -11,6 +11,7 @@ export function createAcount(navigateTo) {
   const inputPass = document.createElement('input');
   const buttonSingUp = document.createElement('button');
 
+
   imagen.src = './img/logo.png';
   buttonSingUp.textContent = 'Sing Up';
   buttonSingUp.addEventListener('click', () => {
@@ -19,6 +20,7 @@ export function createAcount(navigateTo) {
   buttonBack.textContent ='<-'
   buttonBack.addEventListener('click', () => {
     navigateTo('/');
+
   });
 
   email.textContent = 'Enter Email Id';
@@ -26,7 +28,9 @@ export function createAcount(navigateTo) {
   titlePass.textContent = 'Create Password';
 
   form.append(inputUser, inputPass, inputEmail, buttonSingUp);
+
   section.append(imagen,titleUser, titlePass, form, email, buttonBack);
+
   return section;
 }
 
