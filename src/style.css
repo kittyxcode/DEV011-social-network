@@ -1,3 +1,7 @@
+body {
+  background:  #C6D5C3; 
+}
+ 
  /* * {
     font-family: -apple-system, BlinkMacSystemFont, "San Francisco", Helvetica, Arial, sans-serif;
     font-weight:  300; 
@@ -16,15 +20,8 @@
   width: 1em;
 }
 
-body {
-  background:  #C6D5C3; 
-}
-h4 {
-  font-size:  24px; 
-  font-weight:  600; 
-  color:  #000; 
-  opacity:  .85; 
-}
+
+
 label {
   font-size: 1.3em; 
   color:  #000;
@@ -68,15 +65,70 @@ input {
     justify-content: center;
     align-items: center;
     margin: 1.5em;
+  
+    height: 90vh;
 
   }
+  
+  .sectionlogin{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+
+  }
+
   .logo{
     width: 12em;
     display: flex;
+    margin-top: 1em;
+  }
+
+  .imputname{
+    font-size:  20px; 
+    border:  none;  
+    border-bottom: solid 3px #718C6E;
+    background: transparent;
+    min-width:  280px; 
+    box-sizing:  border-box; 
+    transition:  all .3s linear; 
+    color: 24342B; 
+    font-weight:  400; 
+   
+  }
+
+  .imputpass{
+    font-size:  20px; 
+    border:  none;  
+    border-bottom: solid 3px #718C6E;
+    background: transparent;
+    min-width:  280px; 
+    box-sizing:  border-box; 
+    transition:  all .3s linear; 
+    color: 24342B; 
+    font-weight:  400; 
+  
+  }
+  
+  h4{
+  
+      font-size:  20px; 
+      font-weight:  600; 
+      color:  #000; 
+      opacity:  .85; 
+      margin: 0.5em 0em ;
+  
+  }
+  .formlogin{
+    margin-top: 2em;
   }
 
   .googleImg{
+    padding: 1em ;
     width: 1em;
   }
+  
+  
 
 }

@@ -18,7 +18,7 @@ export function createAcount(navigateTo) {
   });
   buttonBack.textContent ='<-'
   buttonBack.addEventListener('click', () => {
-    navigateTo('/login');
+    navigateTo('/');
   });
 
   email.textContent = 'Enter Email Id';
