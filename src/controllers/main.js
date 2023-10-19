@@ -14,7 +14,7 @@ import { home } from '../views/home.js';
 
 const routes = [
   { path: '/', component: login },
-  { path: '/login.js', component: login },
+  // { path: '/login.js', component: login },
   { path: '/error.js', component: error },
   { path: '/createAcount', component: createAcount },
   { path: '/home', component: home },

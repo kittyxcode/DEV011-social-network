@@ -19,7 +19,7 @@ export function createAcount(navigateTo) {
   });
   buttonBack.textContent ='<-'
   buttonBack.addEventListener('click', () => {
-    navigateTo('/login');
+    navigateTo('/');
 
   });
 
