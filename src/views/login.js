@@ -23,9 +23,17 @@ export function login(navigateTo) {
   const text = document.createElement('p');
   const googleLogo = document.createElement('img');
   googleLogo.className = 'googleImg';
+  const boton =document.createElement('button')
 
   imagen.src = './img/logo.png';
   googleLogo.src = './img/google.png';
+  boton.textContent = 'google'
+ boton.addEventListener ('click', (e) =>{
+    e.preventDefault();
+  
+ }
+  
+ )
   buttonLogin.textContent = 'login';
   buttonCreate.textContent = 'Create a New Account';
   buttonLogin.addEventListener('click', (e) => {
@@ -36,9 +44,28 @@ export function login(navigateTo) {
       navigateTo('/home');
     })
     .catch((error) => {
-      console.error('Error al crear la cuenta:', error);
-    });
+      if (error.code === "auth/invalid-email") {
+        alert("Your email is not valid");
+      }
+      if (error.code === 'auth/invalid-login-credentials') {
+        alert("Incorrect password");
+      }
+      if (error.code === 'auth/invalid-login-credentials') {
+        alert("Your information is not valid");
+      }
+      if (error.code) {
+        alert(error);
+      }
   });
+});
+
+auth.onAuthStateChanged(user => {
+  if (user && !user.emailVerified) {
+    console.log("User's email is not verified.");
+  } else {
+    // El usuario ha iniciado sesión y su correo está verificado o no ha iniciado sesión.
+  }
+});
 
   buttonCreate.addEventListener('click', () => {
     navigateTo('/createAcount');
@@ -49,7 +76,7 @@ export function login(navigateTo) {
   text.textContent = 'Or login With';
 
   form.append(titleUser, inputUser, titlePass, inputPass, buttonLogin);
-  section.append(imagen, form, buttonLogin, text, buttonCreate, googleLogo);
+  section.append(imagen, form, buttonLogin, text, buttonCreate, googleLogo, boton);
 
   return section;
 }
