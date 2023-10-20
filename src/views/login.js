@@ -1,7 +1,7 @@
 import { auth } from '../firebase';
-import { crearUsuarioConCorreoYContrasena } from '../lib';
+import { ingresoUsuarioExistente } from '../lib';
 
-//hola
+
 export function login(navigateTo) {
   const section = document.createElement('section');
   section.className = 'sectionlogin';
@@ -30,18 +30,17 @@ export function login(navigateTo) {
   buttonCreate.textContent = 'Create a New Account';
   buttonLogin.addEventListener('click', (e) => {
     e.preventDefault();
-    crearUsuarioConCorreoYContrasena(inputUser.value, inputPass.value)
-      .then(() => {
-        alert('Cuenta Creada');
-        navigateTo('/home');
-      })
-      .catch((error) => {
-        console.error('Error al crear la cuenta:', error);
-        // Puedes mostrar un mensaje de error al usuario si es necesario.
-      });
+    ingresoUsuarioExistente(inputUser.value, inputPass.value) 
+    .then(() => {
+      alert('Cuenta Creada');
+      navigateTo('/home');
+    })
+    .catch((error) => {
+      console.error('Error al crear la cuenta:', error);
+    });
   });
 
-  buttonCreate.addEventListener('click', (e) => {
+  buttonCreate.addEventListener('click', () => {
     navigateTo('/createAcount');
   });
 
