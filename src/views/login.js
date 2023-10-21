@@ -1,5 +1,5 @@
 import { auth } from '../firebase';
-import { ingresoUsuarioExistente } from '../lib';
+import { ingresoUsuarioExistente, iniciarConGoogle } from '../lib';
 
 
 export function login(navigateTo) {
@@ -28,12 +28,22 @@ export function login(navigateTo) {
   imagen.src = './img/logo.png';
   googleLogo.src = './img/google.png';
   boton.textContent = 'google'
- boton.addEventListener ('click', (e) =>{
+  boton.addEventListener ('click', (e) =>{
     e.preventDefault();
+    iniciarConGoogle()
+    .then((result) => {
+      alert('Cuenta Creada');
+      navigateTo('/home');
+    })
+    .catch((error) => {
+      if (error.code) {
+        alert(error);
+      }
   
- }
-  
+ })}
  )
+  
+
   buttonLogin.textContent = 'login';
   buttonCreate.textContent = 'Create a New Account';
   buttonLogin.addEventListener('click', (e) => {
