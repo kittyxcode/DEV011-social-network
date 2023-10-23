@@ -1,5 +1,6 @@
 body {
   background:  #C6D5C3; 
+  font-family: Arial, Helvetica, sans-serif;
 }
  
  /* * {
@@ -117,7 +118,7 @@ input {
       font-weight:  600; 
       color:  #000; 
       opacity:  .85; 
-      margin: 0.5em 0em ;
+      margin: 1.3em 0em ;
   
   }
   .formlogin{
@@ -125,10 +126,36 @@ input {
   }
 
   .googleImg{
-    padding: 1em ;
-    width: 1em;
+    width: 2em;
   }
   
-  
+  button {
+    background: #24342B;
+    color: aliceblue;
+    font-size: 20PX;
+    width:  auto;
+    min-width:  100px;
+    border-radius:  24px; 
+    text-align:  center; 
+    padding:  10px 40px;
+    margin-top: 1.5em; 
+  }
+
+  .createAccount{
+    position: relative;
+    top: 4em;
+    color: #6B6B6B;
+  }
+  .textp{
+    color: #718C6E;
+    margin-top: 3em;
+  }
+
+  .buttonBack{
+    width: 3em;
+    position: relative;
+    left: -9em;
+    top: -7em;
+  }
 
 }
