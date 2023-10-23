@@ -1,9 +1,9 @@
 body {
-  background:  #C6D5C3; 
+  background: #c6d5c3;
   font-family: Arial, Helvetica, sans-serif;
 }
- 
- /* * {
+
+/* * {
     font-family: -apple-system, BlinkMacSystemFont, "San Francisco", Helvetica, Arial, sans-serif;
     font-weight:  300; 
     margin:  0; 
@@ -57,7 +57,6 @@ input {
 } */
 
 @media screen and (min-width: 375px) {
-
   #root {
     display: flex;
     flex-direction: column;
@@ -66,96 +65,135 @@ input {
     justify-content: center;
     align-items: center;
     margin: 1.5em;
-  
-    height: 90vh;
 
+    height: 90vh;
   }
-  
-  .sectionlogin{
+
+  .sectionlogin {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-
   }
 
-  .logo{
+  .logo {
     width: 12em;
     display: flex;
     margin-top: 1em;
   }
 
-  .imputname{
-    font-size:  20px; 
-    border:  none;  
-    border-bottom: solid 3px #718C6E;
+  #inputUserError.imputname {
+    font-size: 20px;
+    border: none;
+    border-bottom: solid 3px #718c6e;
     background: transparent;
-    min-width:  280px; 
-    box-sizing:  border-box; 
-    transition:  all .3s linear; 
-    color: 24342B; 
-    font-weight:  400; 
-   
+    min-width: 280px;
+    box-sizing: border-box;
+    transition: all 0.3s linear;
+    color: 24342B;
+    font-weight: 400;
   }
 
-  .imputpass{
-    font-size:  20px; 
-    border:  none;  
-    border-bottom: solid 3px #718C6E;
+  
+    
+    /* Este es nuestro diseño para los campos no válidos */
+    /* input:invalid {
+      border-color: #900;
+      background-color: #fdd;
+    }
+    
+    input:focus:invalid {
+      outline: none;
+    }
+    
+    /* Este es el diseño para nuestros mensajes de error *
+    .error {
+      width: 100%;
+      padding: 0;
+      font-size: 80%;
+      color: white;
+      background-color: #900;
+      border-radius: 0 0 5px 5px;
+    
+      box-sizing: border-box;
+    }
+    
+    .error.active {
+      padding: 0.3em;
+      display: inline-block; /* Para que el span respete el flujo del texto 
+      margin-left: 10px;    /* Ajusta el margen izquierdo según tus preferencias 
+      background-color: blue; 
+    } */
+  }
+
+  #spanErrorUserStyle {
+    display: inline-block;  
+    margin-left: 10px;
+    color: #570b63;
+    
+  }
+  #spanErrorPassStyle {
+    display: inline-block;  
+    margin-left: 10px;
+    color: #570b63;
+    
+  }
+
+
+  .imputpass {
+    font-size: 20px;
+    border: none;
+    border-bottom: solid 3px #718c6e;
     background: transparent;
-    min-width:  280px; 
-    box-sizing:  border-box; 
-    transition:  all .3s linear; 
-    color: 24342B; 
-    font-weight:  400; 
-  
+    min-width: 280px;
+    box-sizing: border-box;
+    transition: all 0.3s linear;
+    color: 24342B;
+    font-weight: 400;
   }
-  
-  h4{
-  
-      font-size:  20px; 
-      font-weight:  600; 
-      color:  #000; 
-      opacity:  .85; 
-      margin: 1.3em 0em ;
-  
+
+  h4 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+    opacity: 0.85;
+    margin: 1.3em 0em;
   }
-  .formlogin{
+  .formlogin {
     margin-top: 2em;
   }
 
-  .googleImg{
+  .googleImg {
     width: 2em;
   }
-  
+
   button {
-    background: #24342B;
+    background: #24342b;
     color: aliceblue;
-    font-size: 20PX;
-    width:  auto;
-    min-width:  100px;
-    border-radius:  24px; 
-    text-align:  center; 
-    padding:  10px 40px;
-    margin-top: 1.5em; 
+    font-size: 20px;
+    width: auto;
+    min-width: 100px;
+    border-radius: 24px;
+    text-align: center;
+    padding: 10px 40px;
+    margin-top: 1.5em;
   }
 
-  .createAccount{
+  .createAccount {
     position: relative;
     top: 4em;
-    color: #6B6B6B;
+    color: #6b6b6b;
   }
-  .textp{
-    color: #718C6E;
+  .textp {
+    color: #718c6e;
     margin-top: 3em;
   }
 
-  .buttonBack{
+  .buttonBack {
     width: 3em;
     position: relative;
     left: -9em;
     top: -7em;
   }
-
 }

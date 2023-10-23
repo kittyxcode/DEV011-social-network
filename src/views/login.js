@@ -16,9 +16,15 @@ export function login(navigateTo) {
   titlePass.className = "tirlepass";
   const inputUser = document.createElement("input");
   inputUser.className = "imputname";
+  inputUser.id = "inputUserError";
+  inputUser.type = "email";
+  const spanErrorUser = document.createElement("span");
+  spanErrorUser.id = "spanErrorUserStyle";
   const inputPass = document.createElement("input");
   inputPass.className = "imputpass";
   inputPass.type = "password";
+  const spanErrorPass = document.createElement("span");
+  spanErrorPass.id = "spanErrorPassStyle";
   const buttonLogin = document.createElement("button");
   const text = document.createElement("p");
   text.className = "textp";
@@ -51,20 +57,59 @@ export function login(navigateTo) {
         navigateTo("/home");
       })
       .catch((error) => {
+        console.log(error.code)
         if (error.code === "auth/invalid-email") {
-          alert("Your email is not valid");
+          spanErrorUser.textContent= "Your email is not valid";
         }
         if (error.code === "auth/invalid-login-credentials") {
-          alert("Incorrect password");
+          spanErrorPass.textContent ="Incorrect password";
         }
         if (error.code === "auth/invalid-login-credentials") {
-          alert("Your information is not valid");
+          spanErrorUser.textContent = "Your information is not valid";
         }
-        if (error.code) {
-          alert(error);
-        }
+        // if (error.code) {
+        //   spanErrorPass.textContent= "error";
+        // }
       });
   });
+  inputUser.addEventListener("input", (e) => {
+    e.preventDefault();
+    if (inputUser.validity.valid) {
+    inputUser.innerHTML= "";
+    //inputUser.className= "error";
+  } else {
+    showError;
+    console.log (showError);
+  }
+});
+buttonLogin.addEventListener("click", function (event) {
+  if (!inputUser.validity.valid) {
+    showError();
+    event.preventDefault();
+  }
+});
+// function showError() {
+//   if (inputUser.validity.valueMissing) {
+//     // Si el campo está vacío
+//     // muestra el mensaje de error siguiente.
+//     spanErrorUser.textContent =
+//       "Debe introducir una dirección de correo electrónico.";
+//   } else if (inputUser.validity.typeMismatch) {
+//     // Si el campo no contiene una dirección de correo electrónico
+//     // muestra el mensaje de error siguiente.
+//     spanErrorUser.textContent =
+//       "El valor introducido debe ser una dirección de correo electrónico.";
+//   } else if (inputUser.validity.tooShort) {
+//     // Si los datos son demasiado cortos
+//     // muestra el mensaje de error siguiente.
+//     spanErrorUser.textContent =
+//       "El correo electrónico debe tener al menos ${ inputUser.minLength } caracteres; ha introducido ${ inputUser.value.length }.";
+//   }
+
+//   // Establece el estilo apropiado
+//   spanErrorUser.className = "error activo";
+//}
+
 
   auth.onAuthStateChanged((user) => {
     if (user && !user.emailVerified) {
@@ -82,7 +127,7 @@ export function login(navigateTo) {
   titlePass.textContent = "Password";
   text.textContent = "Or login With";
 
-  form.append(titleUser, inputUser, titlePass, inputPass, buttonLogin);
+  form.append(titleUser, inputUser, spanErrorUser, titlePass, inputPass, spanErrorPass, buttonLogin);
   section.append(imagen, form, buttonLogin, text, googleLogo, buttonCreate);
 
   return section;
