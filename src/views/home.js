@@ -1,1 +1,1 @@
-export function home(){}
+export function home() {}
