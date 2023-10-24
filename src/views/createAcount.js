@@ -1,4 +1,3 @@
-import { auth } from '../firebase';
 import { crearUsuarioConCorreoYContrasena, correoValidacion } from '../lib';
 
 export function createAcount(navigateTo) {
