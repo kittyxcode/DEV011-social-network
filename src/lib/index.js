@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 // aqui exportaras las funciones que necesites
 import {
   createUserWithEmailAndPassword,
@@ -8,14 +9,17 @@ import {
 } from 'firebase/auth';
 import { auth } from '../firebase';
 
+// eslint-disable-next-line arrow-body-style
 export const crearUsuarioConCorreoYContrasena = (email, password) => {
-   return createUserWithEmailAndPassword(auth, email, password);
+  return createUserWithEmailAndPassword(auth, email, password);
 };
 
+// eslint-disable-next-line arrow-body-style
 export const ingresoUsuarioExistente = (email, password) => {
-  signInWithEmailAndPassword(auth, email, password);
+  return signInWithEmailAndPassword(auth, email, password);
 };
 
+// eslint-disable-next-line arrow-body-style
 export const correoValidacion = () => {
   return sendEmailVerification(auth.currentUser);
 };
@@ -26,5 +30,6 @@ export const iniciarConGoogle = () => {
     // This gives you a Google Access Token. You can use it to access the Google API.
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
+    return token;
   });
 };
