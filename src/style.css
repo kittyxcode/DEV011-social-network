@@ -3,59 +3,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* * {
-    font-family: -apple-system, BlinkMacSystemFont, "San Francisco", Helvetica, Arial, sans-serif;
-    font-weight:  300; 
-    margin:  0; 
-}	
-/* 
-#root {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-} */
-
-/* .googleImg{
-  width: 1em;
-}
-
-
-
-label {
-  font-size: 1.3em; 
-  color:  #000;
-  position: absolute;
-  left:0;
-}
-
-button {
-  width:  auto;
-  min-width:  100px;
-  border-radius:  24px; 
-  text-align:  center; 
-  padding:  15px 40px;
-  margin-top:  5px; 
-}
-
-input {
-  font-size:  20px; 
-  border:  none;  
-  border-bottom: solid 3px #718C6E;
-  background: transparent;
-  min-width:  280px; 
-  box-sizing:  border-box; 
-  transition:  all .3s linear; 
-  color: 24342B; 
-  font-weight:  400; 
-  margin-top: 5em;
-}
-.floating-label {
-  position:  relative; 
-  margin-bottom:  10px; 
-} */
-
 @media screen and (min-width: 375px) {
   #root {
     display: flex;
@@ -88,7 +35,7 @@ input {
     border: none;
     border-bottom: solid 3px #718c6e;
     background: transparent;
-    min-width: 280px;
+    min-width: 330px;
     box-sizing: border-box;
     transition: all 0.3s linear;
     color: 24342B;
@@ -97,42 +44,43 @@ input {
 
   
     
-    /* Este es nuestro diseño para los campos no válidos */
-    /* input:invalid {
-      border-color: #900;
-      background-color: #fdd;
-    }
     
-    input:focus:invalid {
-      outline: none;
-    }
-    
-    /* Este es el diseño para nuestros mensajes de error *
-    .error {
-      width: 100%;
-      padding: 0;
-      font-size: 80%;
-      color: white;
-      background-color: #900;
-      border-radius: 0 0 5px 5px;
-    
-      box-sizing: border-box;
-    }
-    
-    .error.active {
-      padding: 0.3em;
-      display: inline-block; /* Para que el span respete el flujo del texto 
-      margin-left: 10px;    /* Ajusta el margen izquierdo según tus preferencias 
-      background-color: blue; 
-    } */
   }
 
+
+
   #spanErrorUserStyle {
-    display: inline-block;  
-    margin-left: 10px;
-    color: #570b63;
-    
+    display: inline-block;
+    visibility: hidden;
+    background-color: #570b63; /* Color de fondo del globo */
+    color: white; /* Color del texto dentro del globo */
+    border-radius: 10px; /* Bordes redondeados para el globo */
+    padding: 10px 20px; /* Espaciado interno del globo */
+    position: relative;
+    max-width: 300px; /* Ancho máximo del globo */
+    margin-left: 0px; /* Espacio entre el globo y el elemento al que pertenece */
+    margin-top: 10px; /* Ajusta la distancia entre el globo y el elemento */
   }
+  
+  #spanErrorUserStyle::before {
+    content: "";
+    position: absolute;
+    bottom: 100%; /* Cambiar "top" a "bottom" */
+    left: 50%;
+    margin-left: -15px; /* Posicionamiento de la punta del globo en el centro */
+    border-width: 15px;
+    border-style: solid;
+    border-color: transparent transparent #570b63 transparent; /* Cambiar el orden de los colores para que la punta apunte hacia abajo */
+    margin-top: -2px; /* Ajusta la distancia entre el triángulo y el globo */
+  }
+  
+  
+  
+  
+  
+  
+  
+
   #spanErrorPassStyle {
     display: inline-block;  
     margin-left: 10px;
@@ -146,7 +94,7 @@ input {
     border: none;
     border-bottom: solid 3px #718c6e;
     background: transparent;
-    min-width: 280px;
+    min-width: 100%;
     box-sizing: border-box;
     transition: all 0.3s linear;
     color: 24342B;
@@ -196,4 +144,4 @@ input {
     left: -9em;
     top: -7em;
   }
-}
+
