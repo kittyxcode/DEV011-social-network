@@ -17,8 +17,13 @@ export function createAcount(navigateTo) {
   form.className = "formlogin";
   const inputEmail = document.createElement("input");
   inputEmail.className = "imputname";
+  const spanErrorUser = document.createElement('span');
+  spanErrorUser.id = 'spanErrorUserStyle';
+  spanErrorUser.textContent = 'error por defecto';
   const inputPass = document.createElement("input");
   inputPass.className = "imputpass";
+  const spanErrorPass = document.createElement('span');
+  spanErrorPass.id = 'spanErrorPassStyle';
   const buttonSingUp = document.createElement("button");
 
   imagen.src = "./img/logo.png";
@@ -41,17 +46,24 @@ export function createAcount(navigateTo) {
 
       .catch((error) => {
         if (error.code === "auth/invalid-email") {
-          alert("Your email is not valid");
+          spanErrorUser.textContent = "Your email is not valid";
+          spanErrorUser.style.visibility = 'visible';
         }
         if (error.code === "auth/weak-password") {
-          alert("Password should be at least 6 characters");
+          spanErrorPass.textContent ="Password should be at least 6 characters";
+          spanErrorPass.style.visibility = 'visible';
+        }
+        if (error.code === "auth/missing-password") {
+          spanErrorPass.textContent ="Password is not valid";
+          spanErrorPass.style.visibility = 'visible';
         }
         if (error.code === "auth/email-already-in-use") {
-          alert(error);
+          spanErrorUser.textContent = 'Your information is not valid';
+          spanErrorUser.style.visibility = 'visible';
         }
-        if (error.code) {
-          alert(error);
-        }
+        // if (error.code) {
+        //   alert(error);
+        // }
       });
   });
 
@@ -59,7 +71,7 @@ export function createAcount(navigateTo) {
   titleUser.textContent = "Create User Name";
   titlePass.textContent = "Create Password";
 
-  form.append(email, inputEmail, titlePass, inputPass, );
+  form.append(email, inputEmail,spanErrorUser, titlePass,  inputPass,spanErrorPass, );
 
   section.append(buttonBack, imagen, form, buttonSingUp, );
 
