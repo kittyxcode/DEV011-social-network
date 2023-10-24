@@ -1,4 +1,3 @@
-import { auth } from '../firebase';
 import { ingresoUsuarioExistente, iniciarConGoogle } from '../lib';
 
 export function login(navigateTo) {
@@ -34,18 +33,12 @@ export function login(navigateTo) {
 
   imagen.src = './img/logo.png';
   googleLogo.src = './img/google.png';
+
   googleLogo.addEventListener('click', (e) => {
     e.preventDefault();
-    iniciarConGoogle()
-      .then((result) => {
-        alert('Cuenta Creada');
-        navigateTo('/home');
-      })
-      .catch((error) => {
-        if (error.code) {
-          alert(error);
-        }
-      });
+    iniciarConGoogle().then(() => {
+      navigateTo('/home');
+    });
   });
 
   buttonLogin.textContent = 'Login';
@@ -54,11 +47,9 @@ export function login(navigateTo) {
     e.preventDefault();
     ingresoUsuarioExistente(inputUser.value, inputPass.value)
       .then(() => {
-        alert('Cuenta Creada');
         navigateTo('/home');
       })
       .catch((error) => {
-        console.log(error.code);
         if (error.code === 'auth/invalid-email') {
           spanErrorUser.textContent = 'Your email is not valid';
           spanErrorUser.style.visibility = 'visible';
@@ -69,7 +60,7 @@ export function login(navigateTo) {
         }
         if (error.code === 'auth/invalid-login-credentials') {
           spanErrorUser.textContent = 'Your information is not valid';
-          spanErrorPass.style.visibility = 'visible'
+          spanErrorPass.style.visibility = 'visible';
         }
         // if (error.code) {
         //   spanErrorPass.textContent= "error";
@@ -80,20 +71,6 @@ export function login(navigateTo) {
     e.preventDefault();
     if (inputUser.validity.valid) {
       inputUser.innerHTML = '';
-    }
-  });
-  
-  buttonLogin.addEventListener('click', function (event) {
-    if (!inputUser.validity.valid) {
-      event.preventDefault();
-    }
-  });
-
-  auth.onAuthStateChanged((user) => {
-    if (user && !user.emailVerified) {
-      console.log("User's email is not verified.");
-    } else {
-      // El usuario ha iniciado sesión y su correo está verificado o no ha iniciado sesión.
     }
   });
 
@@ -112,7 +89,7 @@ export function login(navigateTo) {
     titlePass,
     inputPass,
     spanErrorPass,
-    buttonLogin
+    buttonLogin,
   );
   section.append(imagen, form, buttonLogin, text, googleLogo, buttonCreate);
 
