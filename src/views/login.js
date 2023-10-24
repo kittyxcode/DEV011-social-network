@@ -26,6 +26,7 @@ export function login(navigateTo) {
   const spanErrorPass = document.createElement('span');
   spanErrorPass.id = 'spanErrorPassStyle';
   const buttonLogin = document.createElement('button');
+  buttonLogin.className = 'claseLogin';
   const text = document.createElement('p');
   text.className = 'textp';
   const googleLogo = document.createElement('img');
