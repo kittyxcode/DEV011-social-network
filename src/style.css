@@ -38,7 +38,7 @@ body {
     min-width: 330px;
     box-sizing: border-box;
     transition: all 0.3s linear;
-    color: 24342B;
+    color: #24342B;
     font-weight: 400;
     outline: none;
   }
@@ -109,7 +109,7 @@ body {
     min-width: 100%;
     box-sizing: border-box;
     transition: all 0.3s linear;
-    color: 24342B;
+    color: #24342B;
     font-weight: 400;
     outline: none;
   }
