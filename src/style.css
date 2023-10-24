@@ -51,6 +51,7 @@ body {
 
   #spanErrorUserStyle {
     display: inline-block;
+    visibility: hidden;
     background-color: #570b63; /* Color de fondo del globo */
     color: white; /* Color del texto dentro del globo */
     border-radius: 10px; /* Bordes redondeados para el globo */
