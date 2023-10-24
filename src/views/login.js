@@ -65,9 +65,11 @@ export function login(navigateTo) {
         }
         if (error.code === 'auth/invalid-login-credentials') {
           spanErrorPass.textContent = 'Incorrect password';
+          spanErrorPass.style.visibility = 'visible';
         }
         if (error.code === 'auth/invalid-login-credentials') {
           spanErrorUser.textContent = 'Your information is not valid';
+          spanErrorPass.style.visibility = 'visible'
         }
         // if (error.code) {
         //   spanErrorPass.textContent= "error";
