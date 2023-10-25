@@ -19,7 +19,7 @@ describe('prueba de Navegacion', () => {
     const NavigateTo = jest.fn();
     DOM.append(login(NavigateTo));
     const buttonLogin = DOM.querySelector('.claseLogin');
-    buttonLogin.click();
-    expect(NavigateTo).toHaveBeenCalledTimes(0);
+    buttonLogin.click(NavigateTo());
+    expect(NavigateTo).toHaveBeenCalledTimes(1);
   });
 });
