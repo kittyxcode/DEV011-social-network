@@ -9,15 +9,17 @@ import {
   sendEmailVerification,
 } from 'firebase/auth';
 import { auth } from '../firebase';
-import { db, collection, addDoc, getDocs } from '../firestore';
+import { db, collection, addDoc, getDocs, onSnapshot } from '../firestore';
+
+const postCollection = collection(db, 'post');
 
 export const createPost = (comment) => {
-  addDoc(collection(db, 'post'), {
+  addDoc(postCollection, {
     comment,
   });
 };
 
-export const querySnapshot = getDocs(collection(db, 'post'));
+export const querySnapshot = getDocs(postCollection);
 
 // eslint-disable-next-line arrow-body-style
 export const crearUsuarioConCorreoYContrasena = (email, password) => {
