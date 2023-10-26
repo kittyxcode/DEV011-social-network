@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable arrow-body-style */
 // aqui exportaras las funciones que necesites
 import {
@@ -8,13 +9,15 @@ import {
   sendEmailVerification,
 } from 'firebase/auth';
 import { auth } from '../firebase';
-import { db, collection, addDoc,} from '../firestore';
+import { db, collection, addDoc, getDocs } from '../firestore';
 
 export const createPost = (comment) => {
   addDoc(collection(db, 'post'), {
     comment,
   });
 };
+
+export const querySnapshot = getDocs(collection(db, 'post'));
 
 // eslint-disable-next-line arrow-body-style
 export const crearUsuarioConCorreoYContrasena = (email, password) => {
