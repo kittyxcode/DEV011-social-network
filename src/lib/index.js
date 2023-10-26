@@ -11,8 +11,8 @@ import { auth } from '../firebase';
 import { db, collection, addDoc,} from '../firestore';
 
 export const createPost = (comment) => {
-  addDoc(collection(db, 'coments'), {
-    comment: 'soy la irma',
+  addDoc(collection(db, 'post'), {
+    comment,
   });
 };
 

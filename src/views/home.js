@@ -11,12 +11,10 @@ export function home(navigateTo) {
   section.append(post, buttonPost);
   const postSection = document.createElement('article');
   postSection.className = 'post-section';
-  
-
   buttonPost.addEventListener('click', () => {
     const comment = document.querySelector('#inputPost').value;
     console.log('Sirve el click', comment);
-    createPost();
+    createPost(comment);
   });
 
   return section;
