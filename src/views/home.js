@@ -1,3 +1,5 @@
+import { createPost } from '../lib/index.js';
+
 export function home(navigateTo) {
   const section = document.createElement('section');
   const post = document.createElement('input');
@@ -7,9 +9,14 @@ export function home(navigateTo) {
   buttonPost.id = 'buttonPost';
   buttonPost.textContent = 'Post';
   section.append(post, buttonPost);
+  const postSection = document.createElement('article');
+  postSection.className = 'post-section';
+  
 
   buttonPost.addEventListener('click', () => {
-    const coment = document.querySelector('#inputPost').value;
+    const comment = document.querySelector('#inputPost').value;
+    console.log('Sirve el click', comment);
+    createPost();
   });
 
   return section;
