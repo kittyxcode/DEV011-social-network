@@ -9,17 +9,22 @@ import {
   sendEmailVerification,
 } from 'firebase/auth';
 import { auth } from '../firebase';
-import { db, collection, addDoc, getDocs, onSnapshot } from '../firestore';
+import { db, collection, addDoc, getDocs, onSnapshot, orderBy, query } from '../firestore';
 
 const postCollection = collection(db, 'post');
 
 export const createPost = (comment) => {
   addDoc(postCollection, {
     comment,
+    date: Date.now(),
   });
 };
 
+const orden = query(postCollection, orderBy('date', 'desc'))
+
 export const querySnapshot = getDocs(postCollection);
+
+export const renderPostRealTime = (callback) => onSnapshot(orden, callback)
 
 // eslint-disable-next-line arrow-body-style
 export const crearUsuarioConCorreoYContrasena = (email, password) => {
