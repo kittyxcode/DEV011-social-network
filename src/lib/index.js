@@ -9,7 +9,28 @@ import {
   sendEmailVerification,
 } from 'firebase/auth';
 import { auth } from '../firebase';
-import { db, collection, addDoc, getDocs, onSnapshot, orderBy, query } from '../firestore';
+import {
+  db,
+  collection,
+  addDoc,
+  getDocs,
+  onSnapshot,
+  orderBy,
+  query,
+} from '../firestore';
+
+// Agrega un observador para el estado de autenticación
+export const userAuth = auth.onAuthStateChanged((user) => {
+  if (user) {
+    console.log('Usuario autenticado:', user.displayName);
+    return user.displayName;
+  } else {
+    console.log('Ningún usuario autenticado');
+    return 'medio fail';
+  }
+});
+
+console.log(auth.currentUser);
 
 const postCollection = collection(db, 'post');
 
@@ -20,11 +41,11 @@ export const createPost = (comment) => {
   });
 };
 
-const orden = query(postCollection, orderBy('date', 'desc'))
+const orden = query(postCollection, orderBy('date', 'desc'));
 
 export const querySnapshot = getDocs(postCollection);
 
-export const renderPostRealTime = (callback) => onSnapshot(orden, callback)
+export const renderPostRealTime = (callback) => onSnapshot(orden, callback);
 
 // eslint-disable-next-line arrow-body-style
 export const crearUsuarioConCorreoYContrasena = (email, password) => {
