@@ -20,7 +20,7 @@ import {
 } from '../firestore';
 
 // Agrega un observador para el estado de autenticación
-export const userAuth = auth.onAuthStateChanged((user) => {
+/* export const userAuth = auth.onAuthStateChanged((user) => {
   if (user) {
     console.log('Usuario autenticado:', user.displayName);
     return user.displayName;
@@ -28,7 +28,23 @@ export const userAuth = auth.onAuthStateChanged((user) => {
     console.log('Ningún usuario autenticado');
     return 'medio fail';
   }
-});
+}); */
+
+// Agrega un observador para el estado de autenticación
+export const userAuth = () => {
+  return new Promise((resolve, reject) => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        console.log('Usuario autenticado:', user.displayName);
+        resolve(user.displayName);
+      } else {
+        console.log('Ningún usuario autenticado');
+        resolve('medio fail');
+      }
+    });
+  });
+};
+
 
 console.log(auth.currentUser);
 
