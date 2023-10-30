@@ -3,15 +3,17 @@ import { userAuth } from '../lib/index.js';
 
 export function home(navigateTo) {
   const section = document.createElement('section');
+  section.className = 'sectionhome';
   const post = document.createElement('input');
   post.id = 'inputPost';
   post.type = 'text';
+  post.placeholder = "What's on your mind?";
   const buttonPost = document.createElement('button');
   buttonPost.id = 'buttonPost';
   buttonPost.textContent = 'Post';
   const postSection = document.createElement('article');
   postSection.className = 'post-section';
-  const nameUser = document.createElement('h2');
+  const nameUser = document.createElement('h1');
   const contedorPost = document.createElement('div');
   contedorPost.id = 'contendorPost';
   contedorPost.append(nameUser, post, buttonPost);
@@ -38,6 +40,7 @@ export function home(navigateTo) {
       console.log(doc.data());
       const postNuevo = document.createElement('input');
       postNuevo.value = doc.data().comment;
+      postNuevo.classList.add('comentario-input'); // Asigna una clase a los elementos input
       postSection.append(postNuevo);
     });
   });
