@@ -18,6 +18,7 @@ export function home(navigateTo) {
   contedorPost.id = 'contendorPost';
   contedorPost.append(nameUser, post, buttonPost);
   section.append(contedorPost, postSection);
+  
   buttonPost.addEventListener('click', () => {
     const comment = document.querySelector('#inputPost').value;
     console.log('Sirve el click', comment.value);
@@ -32,6 +33,8 @@ export function home(navigateTo) {
 
   // Llama a updateUserDisplayName para actualizar el nombre de usuario cuando sea necesario.
   updateUserDisplayName();
+
+  
   renderPostRealTime((querySnapshot) => {
     post.value = '';
     postSection.textContent = '';
