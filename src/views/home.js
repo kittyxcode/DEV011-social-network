@@ -60,10 +60,17 @@ buttonPost.addEventListener('click', () => {
       postNuevo.value = doc.data().comment;
       postNuevo.classList.add('comentario-input'); // Asigna una clase a los elementos input
       postNuevo.disabled = true;
-      const botonEditar = document.createElement('button');
-      botonEditar.textContent = 'Edit';
-      botonEditar.className ='botonEditar';
-      postSection.append(divEdit, postNuevo, botonEditar);
+      const imgEditar = document.createElement('img');
+      imgEditar.className = 'Edit';
+      imgEditar.src = '/img/Edit.png';
+      const imgDelete = document.createElement('img');
+      imgDelete.className = 'borrar';
+      imgDelete.src = '/img/borrar.png';
+      const imgLike = document.createElement('img');
+      imgLike.className = 'Like';
+      imgLike.src = '/img/Like.png';
+      postSection.append(divEdit);
+      divEdit.append(postNuevo, imgLike, imgEditar, imgDelete);
 
 
     });
