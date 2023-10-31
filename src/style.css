@@ -9,10 +9,9 @@ body {
     flex-direction: column;
     flex-wrap: nowrap;
     align-content: center;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     margin: 1.5em;
-
     height: 90vh;
   }
 
@@ -43,7 +42,47 @@ body {
     outline: none;
   }
 
+  /*Section Home*/
+
+  .sectionhome {
   
+  #inputPost{
+    margin-top: 60px;
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0.9375rem;
+    background: #EDEDED;
+    min-width: 300px;
+    height: 3.5625rem;
+    box-sizing: border-box;
+    display: block;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 10px;
+
+  }
+
+  .placeholder{
+    text-align: center;
+    padding: 10px;
+  }
+  }
+  
+.comentario-input{
+    background-color: transparent;
+    border: none;
+    border-radius: 0.9375rem;
+    background: #EDEDED;
+    min-width: 300px;
+    height: 3.5625rem;
+    box-sizing: border-box;
+    display: block;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-bottom: 10px;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: medium;
+  }
     
     
   /* } */
@@ -141,6 +180,12 @@ body {
     margin-top: 1.5em;
   }
 
+  #buttonPost{
+    float: right;
+    border: none;
+    margin-bottom: 20px;
+  }
+
   .createAccount {
     position: relative;
     top: 4em;
@@ -157,6 +202,7 @@ body {
     left: -9em;
     top: -5em;
   }
+  /*Estilos Create Post*/
 
   .container{
     width: 500px;
