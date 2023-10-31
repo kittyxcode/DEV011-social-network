@@ -202,6 +202,28 @@ body {
     left: -9em;
     top: -5em;
   }
+  
+  /* Estilos botones del post para editar/borrar/dar like*/
+  .Edit {
+    width: 2em;
+    float: right;
+    margin-bottom: 1em;
+  }
+  .borrar {
+    width: 2em;
+    float: right;
+    margin-bottom: 1em;
+  }
+  .Like {
+    width: 2em;
+    float: left;
+    margin-bottom: 1em;
+  }
+  
+  
+  
+  
+  
   /*Estilos Create Post*/
 
   .container{
