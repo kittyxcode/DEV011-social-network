@@ -6,20 +6,33 @@ export function home(navigateTo) {
   section.className = 'sectionhome';
   const post = document.createElement('input');
   post.id = 'inputPost';
-  post.type = 'text';
+  post.type = 'textArea';
   post.placeholder = "What's on your mind?";
   const buttonPost = document.createElement('button');
   buttonPost.id = 'buttonPost';
   buttonPost.textContent = 'Post';
+  const divPost = document.createElement('div');
+  divPost.id = "divPost";
   const postSection = document.createElement('article');
   postSection.className = 'post-section';
+  postSection.innerHTML = "";
   const nameUser = document.createElement('h1');
   const contedorPost = document.createElement('div');
   contedorPost.id = 'contendorPost';
+  // const botonEditar = document.createElement('div');
+  // botonEditar.id = 'botonEditar';
   contedorPost.append(nameUser, post, buttonPost);
-  section.append(contedorPost, postSection);
+  divPost.append(postSection);
+  section.append(contedorPost, divPost);
   
-  buttonPost.addEventListener('click', () => {
+  
+// botonEditar.addEventListener('click', () => {
+//   const comentarioInput =doc.querySelector('.comentario-input');
+//   comentarioInput.readOnly = false;
+//   comentarioInput.focus();
+// })  
+  
+buttonPost.addEventListener('click', () => {
     const comment = document.querySelector('#inputPost').value;
     console.log('Sirve el click', comment.value);
     createPost(comment);
@@ -41,10 +54,18 @@ export function home(navigateTo) {
     querySnapshot.forEach((doc) => {
       console.log(doc.id);
       console.log(doc.data());
+      const divEdit = document.createElement('div');
+      divEdit.id = "divEdit";
       const postNuevo = document.createElement('input');
       postNuevo.value = doc.data().comment;
       postNuevo.classList.add('comentario-input'); // Asigna una clase a los elementos input
-      postSection.append(postNuevo);
+      postNuevo.disabled = true;
+      const botonEditar = document.createElement('button');
+      botonEditar.textContent = 'Edit';
+      botonEditar.className ='botonEditar';
+      postSection.append(divEdit, postNuevo, botonEditar);
+
+
     });
   });
   return section;
