@@ -1,4 +1,4 @@
-import { createPost, querySnapshot, renderPostRealTime } from '../lib/index.js';
+import { createPost, deleteComment, querySnapshot, renderPostRealTime } from '../lib/index.js';
 import { userAuth } from '../lib/index.js';
 
 export function home(navigateTo) {
@@ -72,8 +72,14 @@ buttonPost.addEventListener('click', () => {
       postSection.append(divEdit);
       divEdit.append(postNuevo, imgLike, imgEditar, imgDelete);
 
+      imgDelete.addEventListener('click', () => {
+        const docId = doc.id;
+        deleteComment(docId);
+        console.log('sirve el click');
+      }); 
 
     });
+
   });
   return section;
 }

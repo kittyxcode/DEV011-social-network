@@ -17,6 +17,9 @@ import {
   onSnapshot,
   orderBy,
   query,
+  doc,
+  updateDoc, 
+  deleteField,
 } from '../firestore';
 
 // Agrega un observador para el estado de autenticación
@@ -30,6 +33,21 @@ import {
   }
 }); */
 
+export const deleteComment = (documentId) => {
+  // Obtén una referencia al documento que contiene el campo "comment"
+  const postRef = doc(db, 'Post', documentId);
+
+  // Utiliza updateDoc con deleteField para eliminar el campo "comment"
+  updateDoc(postRef, {
+    comment: deleteField()
+  })
+  .then(() => {
+    console.log('Campo "comment" eliminado con éxito');
+  })
+  .catch((error) => {
+    console.error('Error al eliminar el campo "comment": ', error);
+  });
+};
 // Agrega un observador para el estado de autenticación
 export const userAuth = () => {
   return new Promise((resolve, reject) => {
