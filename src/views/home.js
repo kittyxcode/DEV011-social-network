@@ -83,11 +83,16 @@ buttonPost.addEventListener('click', () => {
       divEdit.append(postNuevo, imgLike, imgEditar, imgDelete);
 
       imgDelete.addEventListener('click', () => {
-        const docId = doc.id;
-        deleteComment(docId);
-        console.log('sirve el click');
-
-      }); 
+        const resultado = window.confirm('¿Estás seguro de que deseas eliminar este comentario?');
+      
+        if (resultado) {
+          const docId = doc.id;
+          deleteComment(docId);
+          console.log('La acción se ha confirmado y el comentario ha sido eliminado.');
+        } else {
+          console.log('La acción ha sido cancelada.');
+        }
+      });; 
 
     });
 
