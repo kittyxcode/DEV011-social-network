@@ -38,8 +38,8 @@ buttonPost.addEventListener('click', () => {
     createPost(comment);
   });
   function updateUserDisplayName() {
-    userAuth().then((displayName) => {
-      nameUser.textContent = displayName;
+    userAuth().then((user) => {
+      nameUser.textContent = user.displayName;
       // Ahora puedes agregar nameUser al DOM u otro lugar donde desees mostrar el nombre de usuario.
     });
   }
@@ -63,9 +63,19 @@ buttonPost.addEventListener('click', () => {
       const imgEditar = document.createElement('img');
       imgEditar.className = 'Edit';
       imgEditar.src = '/img/Edit.png';
+      const idUserActual = localStorage.getItem('idUser')
       const imgDelete = document.createElement('img');
       imgDelete.className = 'borrar';
       imgDelete.src = '/img/borrar.png';
+      if (doc.data().userId === idUserActual) {
+        console.log(idUserActual, doc.data().userId);
+        imgDelete.style.display = 'block'
+      
+      }
+      else{
+        imgDelete.style.display = 'none'
+      }
+     
       const imgLike = document.createElement('img');
       imgLike.className = 'Like';
       imgLike.src = '/img/Like.png';
@@ -73,10 +83,16 @@ buttonPost.addEventListener('click', () => {
       divEdit.append(postNuevo, imgLike, imgEditar, imgDelete);
 
       imgDelete.addEventListener('click', () => {
-        const docId = doc.id;
-        deleteComment(docId);
-        console.log('sirve el click');
-      }); 
+        const resultado = window.confirm('¿Estás seguro de que deseas eliminar este comentario?');
+      
+        if (resultado) {
+          const docId = doc.id;
+          deleteComment(docId);
+          console.log('La acción se ha confirmado y el comentario ha sido eliminado.');
+        } else {
+          console.log('La acción ha sido cancelada.');
+        }
+      });; 
 
     });
 
