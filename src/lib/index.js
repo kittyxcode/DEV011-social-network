@@ -20,6 +20,7 @@ import {
   doc,
   deleteDoc,
 } from '../firestore';
+import { async } from 'regenerator-runtime';
 
 // Agrega un observador para el estado de autenticación
 /* export const userAuth = auth.onAuthStateChanged((user) => {
@@ -32,18 +33,17 @@ import {
   }
 }); */
 
-export const deleteComment = (documentId) => {
-  deleteDoc(doc(db, "post", documentId));
 
-};
 
 // Agrega un observador para el estado de autenticación
 export const userAuth = () => {
   return new Promise((resolve, reject) => {
     auth.onAuthStateChanged((user) => {
       if (user) {
-        console.log('Usuario autenticado:', user.displayName);
-        resolve(user.displayName);
+        localStorage.setItem('idUser', user.uid)
+        console.log('Usuario autenticado:', user);
+
+        resolve(user);
       } else {
         console.log('Ningún usuario autenticado');
         resolve('medio fail');
@@ -52,16 +52,32 @@ export const userAuth = () => {
   });
 };
 
+export const deleteComment = (documentId) => {
+  deleteDoc(doc(db, "post", documentId));
 
-console.log(auth.currentUser);
+};
+
+// export const deletePostUser = () => {
+//   userAuth()
+//   .then((userID)) => {
+//     if (userID)
+//     postCollection
+//   }
+// }
 
 const postCollection = collection(db, 'post');
 
 export const createPost = (comment) => {
+
+  const idUser = localStorage.getItem('idUser')
+ console.log({idUser});
+
   addDoc(postCollection, {
     comment,
     date: Date.now(),
-  });
+    userId: idUser
+  
+  })
 };
 
 const orden = query(postCollection, orderBy('date', 'desc'));
