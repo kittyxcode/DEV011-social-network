@@ -3,6 +3,7 @@ import {
   deleteComment,
   querySnapshot,
   renderPostRealTime,
+  editarComment,
 } from '../lib/index.js';
 import { userAuth } from '../lib/index.js';
 
@@ -104,6 +105,19 @@ export function home(navigateTo) {
         } else {
           console.log('La acción ha sido cancelada.');
         }
+      });
+      imgEditar.addEventListener('click', () => {
+        postNuevo.disabled = false;
+        const botonGuardarEdition = document.createElement('button');
+        botonGuardarEdition.textContent = 'Save';
+        divEdit.append(botonGuardarEdition);
+        botonGuardarEdition.addEventListener('click', () => {
+          editarComment(doc.id, postNuevo.value);
+          console.log('entro en imgEditar', editarComment());
+        });
+
+        //el campo del comentario en UI sea editable
+        //crearamos un boton y ha ese boton pasarle un evento
       });
     });
   });
