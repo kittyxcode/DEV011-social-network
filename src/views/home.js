@@ -1,4 +1,10 @@
-import { createPost, deleteComment, querySnapshot, renderPostRealTime } from '../lib/index.js';
+import {
+  createPost,
+  deleteComment,
+  querySnapshot,
+  renderPostRealTime,
+  editarComment,
+} from '../lib/index.js';
 import { userAuth } from '../lib/index.js';
 
 export function home(navigateTo) {
@@ -12,10 +18,10 @@ export function home(navigateTo) {
   buttonPost.id = 'buttonPost';
   buttonPost.textContent = 'Post';
   const divPost = document.createElement('div');
-  divPost.id = "divPost";
+  divPost.id = 'divPost';
   const postSection = document.createElement('article');
   postSection.className = 'post-section';
-  postSection.innerHTML = "";
+  postSection.innerHTML = '';
   const nameUser = document.createElement('h1');
   const contedorPost = document.createElement('div');
   contedorPost.id = 'contendorPost';
@@ -24,15 +30,14 @@ export function home(navigateTo) {
   contedorPost.append(nameUser, post, buttonPost);
   divPost.append(postSection);
   section.append(contedorPost, divPost);
-  
-  
-// botonEditar.addEventListener('click', () => {
-//   const comentarioInput =doc.querySelector('.comentario-input');
-//   comentarioInput.readOnly = false;
-//   comentarioInput.focus();
-// })  
-  
-buttonPost.addEventListener('click', () => {
+
+  // botonEditar.addEventListener('click', () => {
+  //   const comentarioInput =doc.querySelector('.comentario-input');
+  //   comentarioInput.readOnly = false;
+  //   comentarioInput.focus();
+  // })
+
+  buttonPost.addEventListener('click', () => {
     const comment = document.querySelector('#inputPost').value;
     console.log('Sirve el click', comment.value);
     createPost(comment);
@@ -47,7 +52,6 @@ buttonPost.addEventListener('click', () => {
   // Llama a updateUserDisplayName para actualizar el nombre de usuario cuando sea necesario.
   updateUserDisplayName();
 
-  
   renderPostRealTime((querySnapshot) => {
     post.value = '';
     postSection.textContent = '';
@@ -55,7 +59,7 @@ buttonPost.addEventListener('click', () => {
       console.log(doc.id);
       console.log(doc.data());
       const divEdit = document.createElement('div');
-      divEdit.id = "divEdit";
+      divEdit.id = 'divEdit';
       const postNuevo = document.createElement('input');
       postNuevo.value = doc.data().comment;
       postNuevo.classList.add('comentario-input'); // Asigna una clase a los elementos input
@@ -63,19 +67,24 @@ buttonPost.addEventListener('click', () => {
       const imgEditar = document.createElement('img');
       imgEditar.className = 'Edit';
       imgEditar.src = '/img/Edit.png';
-      const idUserActual = localStorage.getItem('idUser')
+      const idUserActual = localStorage.getItem('idUser');
       const imgDelete = document.createElement('img');
       imgDelete.className = 'borrar';
       imgDelete.src = '/img/borrar.png';
       if (doc.data().userId === idUserActual) {
         console.log(idUserActual, doc.data().userId);
-        imgDelete.style.display = 'block'
-      
+        imgDelete.style.display = 'block';
+      } else {
+        imgDelete.style.display = 'none';
       }
-      else{
-        imgDelete.style.display = 'none'
+
+      if (doc.data().userId === idUserActual) {
+        console.log(idUserActual, doc.data().userId);
+        imgEditar.style.display = 'block';
+      } else {
+        imgEditar.style.display = 'none';
       }
-     
+
       const imgLike = document.createElement('img');
       imgLike.className = 'Like';
       imgLike.src = '/img/Like.png';
@@ -83,19 +92,34 @@ buttonPost.addEventListener('click', () => {
       divEdit.append(postNuevo, imgLike, imgEditar, imgDelete);
 
       imgDelete.addEventListener('click', () => {
-        const resultado = window.confirm('¿Estás seguro de que deseas eliminar este comentario?');
-      
+        const resultado = window.confirm(
+          '¿Estás seguro de que deseas eliminar este comentario?'
+        );
+
         if (resultado) {
           const docId = doc.id;
           deleteComment(docId);
-          console.log('La acción se ha confirmado y el comentario ha sido eliminado.');
+          console.log(
+            'La acción se ha confirmado y el comentario ha sido eliminado.'
+          );
         } else {
           console.log('La acción ha sido cancelada.');
         }
-      });; 
+      });
+      imgEditar.addEventListener('click', () => {
+        postNuevo.disabled = false;
+        const botonGuardarEdition = document.createElement('button');
+        botonGuardarEdition.textContent = 'Save';
+        divEdit.append(botonGuardarEdition);
+        botonGuardarEdition.addEventListener('click', () => {
+          editarComment(doc.id, postNuevo.value);
+          console.log('entro en imgEditar', editarComment());
+        });
 
+        //el campo del comentario en UI sea editable
+        //crearamos un boton y ha ese boton pasarle un evento
+      });
     });
-
   });
   return section;
 }

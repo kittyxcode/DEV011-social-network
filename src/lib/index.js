@@ -19,8 +19,10 @@ import {
   query,
   doc,
   deleteDoc,
+  updateDoc,
 } from '../firestore';
 import { async } from 'regenerator-runtime';
+import { documentId } from 'firebase/firestore';
 
 // Agrega un observador para el estado de autenticación
 /* export const userAuth = auth.onAuthStateChanged((user) => {
@@ -33,14 +35,12 @@ import { async } from 'regenerator-runtime';
   }
 }); */
 
-
-
 // Agrega un observador para el estado de autenticación
 export const userAuth = () => {
   return new Promise((resolve, reject) => {
     auth.onAuthStateChanged((user) => {
       if (user) {
-        localStorage.setItem('idUser', user.uid)
+        localStorage.setItem('idUser', user.uid);
         console.log('Usuario autenticado:', user);
 
         resolve(user);
@@ -53,8 +53,14 @@ export const userAuth = () => {
 };
 
 export const deleteComment = (documentId) => {
-  deleteDoc(doc(db, "post", documentId));
+  deleteDoc(doc(db, 'post', documentId));
+};
 
+export const editarComment = (documentId, comment) => {
+  const washingtonRef = doc(db, 'post', documentId);
+  updateDoc(washingtonRef, {
+    comment:comment, 
+  });
 };
 
 // export const deletePostUser = () => {
@@ -68,16 +74,14 @@ export const deleteComment = (documentId) => {
 const postCollection = collection(db, 'post');
 
 export const createPost = (comment) => {
-
-  const idUser = localStorage.getItem('idUser')
- console.log({idUser});
+  const idUser = localStorage.getItem('idUser');
+  console.log({ idUser });
 
   addDoc(postCollection, {
     comment,
     date: Date.now(),
-    userId: idUser
-  
-  })
+    userId: idUser,
+  });
 };
 
 const orden = query(postCollection, orderBy('date', 'desc'));
