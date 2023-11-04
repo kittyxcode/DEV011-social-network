@@ -5,6 +5,7 @@ import {
   renderPostRealTime,
   editarComment,
   darLike,
+  quitarLike,
 } from '../lib/index.js';
 import { userAuth } from '../lib/index.js';
 
@@ -94,7 +95,7 @@ export function home(navigateTo) {
 
       imgLike.addEventListener('click', () => {
         //llamar funcion en index
-        darLike(doc.id, doc.data().userId);
+        quitarLike(doc.id, doc.data().userId);
       });
 
       imgDelete.addEventListener('click', () => {

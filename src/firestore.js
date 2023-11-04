@@ -10,9 +10,10 @@ import {
   deleteDoc,
   updateDoc,
   arrayUnion, 
+  arrayRemove,
 } from 'firebase/firestore';
 import { app } from './firebase';
 
 export const db = getFirestore(app);
 
-export { collection, addDoc, getDocs, onSnapshot, orderBy, query, doc, deleteDoc, updateDoc, arrayUnion };
+export { collection, addDoc, getDocs, onSnapshot, orderBy, query, doc, deleteDoc, updateDoc, arrayUnion, arrayRemove };

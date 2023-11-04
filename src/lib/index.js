@@ -21,6 +21,7 @@ import {
   deleteDoc,
   updateDoc,
   arrayUnion,
+  arrayRemove,
 } from '../firestore';
 import { async } from 'regenerator-runtime';
 import { documentId } from 'firebase/firestore';
@@ -83,6 +84,19 @@ export const darLike = async (documentId, userId) => {
     console.log('Like agregado exitosamente.');
   } catch (error) {
     console.error('Error al agregar el like:', error);
+  }
+};
+
+export const quitarLike = async (documentId, userId) => {
+  const docRef = doc(db, 'post', documentId);
+
+  try {
+    await updateDoc(docRef, {
+      likes: arrayRemove(userId),
+    });
+    console.log('Like eliminado exitosamente.');
+  } catch (error) {
+    console.error('Error al eliminar el like:', error);
   }
 };
 
