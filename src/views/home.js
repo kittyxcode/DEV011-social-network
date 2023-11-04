@@ -4,6 +4,7 @@ import {
   querySnapshot,
   renderPostRealTime,
   editarComment,
+  darLike,
 } from '../lib/index.js';
 import { userAuth } from '../lib/index.js';
 
@@ -90,6 +91,11 @@ export function home(navigateTo) {
       imgLike.src = '/img/Like.png';
       postSection.append(divEdit);
       divEdit.append(postNuevo, imgLike, imgEditar, imgDelete);
+
+      imgLike.addEventListener('click', () => {
+        //llamar funcion en index
+        darLike(doc.id, doc.data().userId);
+      });
 
       imgDelete.addEventListener('click', () => {
         const resultado = window.confirm(

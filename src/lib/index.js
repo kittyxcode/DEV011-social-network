@@ -20,6 +20,7 @@ import {
   doc,
   deleteDoc,
   updateDoc,
+  arrayUnion,
 } from '../firestore';
 import { async } from 'regenerator-runtime';
 import { documentId } from 'firebase/firestore';
@@ -59,8 +60,30 @@ export const deleteComment = (documentId) => {
 export const editarComment = (documentId, comment) => {
   const washingtonRef = doc(db, 'post', documentId);
   updateDoc(washingtonRef, {
-    comment:comment, 
+    comment: comment,
   });
+};
+
+/* export const darLike = (documentId, userId) => {
+  const x = doc(db, 'post', documentId);
+  console.log(x);
+
+  updateDoc(x, {
+    likes: firebase.firestore.FieldValue.arrayUnion(userId),
+  });
+}; */
+
+export const darLike = async (documentId, userId) => {
+  const docRef = doc(db, 'post', documentId);
+
+  try {
+    await updateDoc(docRef, {
+      likes: arrayUnion(userId),
+    });
+    console.log('Like agregado exitosamente.');
+  } catch (error) {
+    console.error('Error al agregar el like:', error);
+  }
 };
 
 // export const deletePostUser = () => {
@@ -81,6 +104,7 @@ export const createPost = (comment) => {
     comment,
     date: Date.now(),
     userId: idUser,
+    likes: [],
   });
 };
 
