@@ -1,9 +1,14 @@
+import { async } from 'regenerator-runtime';
 import {
   createPost,
   deleteComment,
   querySnapshot,
   renderPostRealTime,
   editarComment,
+  darLike,
+  quitarLike,
+  verificarLikes,
+  contarLikes,
 } from '../lib/index.js';
 import { userAuth } from '../lib/index.js';
 
@@ -39,7 +44,7 @@ export function home(navigateTo) {
 
   buttonPost.addEventListener('click', () => {
     const comment = document.querySelector('#inputPost').value;
-    console.log('Sirve el click', comment.value);
+    //console.log('Sirve el click', comment.value);
     createPost(comment);
   });
   function updateUserDisplayName() {
@@ -56,8 +61,8 @@ export function home(navigateTo) {
     post.value = '';
     postSection.textContent = '';
     querySnapshot.forEach((doc) => {
-      console.log(doc.id);
-      console.log(doc.data());
+      //console.log(doc.id);
+      //console.log(doc.data());
       const divEdit = document.createElement('div');
       divEdit.id = 'divEdit';
       const postNuevo = document.createElement('input');
@@ -72,24 +77,35 @@ export function home(navigateTo) {
       imgDelete.className = 'borrar';
       imgDelete.src = '/img/borrar.png';
       if (doc.data().userId === idUserActual) {
-        console.log(idUserActual, doc.data().userId);
+        //console.log(idUserActual, doc.data().userId);
         imgDelete.style.display = 'block';
       } else {
         imgDelete.style.display = 'none';
       }
 
       if (doc.data().userId === idUserActual) {
-        console.log(idUserActual, doc.data().userId);
+        //console.log(idUserActual, doc.data().userId);
         imgEditar.style.display = 'block';
       } else {
         imgEditar.style.display = 'none';
       }
-
+      const countLikes = document.createElement('label');
+      countLikes.textContent = 0;
+      countLikes.id = 'countLikes';
       const imgLike = document.createElement('img');
       imgLike.className = 'Like';
       imgLike.src = '/img/Like.png';
       postSection.append(divEdit);
-      divEdit.append(postNuevo, imgLike, imgEditar, imgDelete);
+      divEdit.append(postNuevo, imgLike, countLikes, imgEditar, imgDelete);
+
+      imgLike.addEventListener('click', async () => {
+        await verificarLikes(doc.id); // Espera a que verificarLikes se complete antes de continuar
+        //console.log('holamundo');
+        //const likes
+        countLikes.textContent = await contarLikes(doc.id);
+        //countLikes.textContent = likes; // Espera a que contarLikes se complete antes de continuar
+        //console.log(`Total de likes: ${likes}`);
+      });
 
       imgDelete.addEventListener('click', () => {
         const resultado = window.confirm(
@@ -99,11 +115,9 @@ export function home(navigateTo) {
         if (resultado) {
           const docId = doc.id;
           deleteComment(docId);
-          console.log(
-            'La acción se ha confirmado y el comentario ha sido eliminado.'
-          );
+          //console.log('La acción se ha confirmado y el comentario ha sido eliminado.' );
         } else {
-          console.log('La acción ha sido cancelada.');
+          //console.log('La acción ha sido cancelada.');
         }
       });
       imgEditar.addEventListener('click', () => {
@@ -113,7 +127,7 @@ export function home(navigateTo) {
         divEdit.append(botonGuardarEdition);
         botonGuardarEdition.addEventListener('click', () => {
           editarComment(doc.id, postNuevo.value);
-          console.log('entro en imgEditar', editarComment());
+          //console.log('entro en imgEditar', editarComment());
         });
 
         //el campo del comentario en UI sea editable
