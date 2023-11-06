@@ -2,13 +2,9 @@ import { async } from 'regenerator-runtime';
 import {
   createPost,
   deleteComment,
-  querySnapshot,
   renderPostRealTime,
   editarComment,
-  darLike,
-  quitarLike,
   verificarLikes,
-  contarLikes,
 } from '../lib/index.js';
 import { userAuth } from '../lib/index.js';
 
@@ -30,27 +26,21 @@ export function home(navigateTo) {
   const nameUser = document.createElement('h1');
   const contedorPost = document.createElement('div');
   contedorPost.id = 'contendorPost';
-  // const botonEditar = document.createElement('div');
-  // botonEditar.id = 'botonEditar';
   contedorPost.append(nameUser, post, buttonPost);
   divPost.append(postSection);
   section.append(contedorPost, divPost);
 
-  // botonEditar.addEventListener('click', () => {
-  //   const comentarioInput =doc.querySelector('.comentario-input');
-  //   comentarioInput.readOnly = false;
-  //   comentarioInput.focus();
-  // })
-
   buttonPost.addEventListener('click', () => {
     const comment = document.querySelector('#inputPost').value;
-    //console.log('Sirve el click', comment.value);
-    createPost(comment);
+
+    if (comment !== '') createPost(comment);
+    else {
+      alert('Agrega un comentario antes de enviarlo.');
+    }
   });
   function updateUserDisplayName() {
     userAuth().then((user) => {
       nameUser.textContent = user.displayName;
-      // Ahora puedes agregar nameUser al DOM u otro lugar donde desees mostrar el nombre de usuario.
     });
   }
 
@@ -58,12 +48,9 @@ export function home(navigateTo) {
   updateUserDisplayName();
 
   renderPostRealTime((querySnapshot) => {
-    console.log('prueba');
     post.value = '';
     postSection.textContent = '';
     querySnapshot.forEach((doc) => {
-      //console.log(doc.id);
-      //console.log(doc.data());
       const divEdit = document.createElement('div');
       divEdit.id = 'divEdit';
       const postNuevo = document.createElement('input');
@@ -78,14 +65,11 @@ export function home(navigateTo) {
       imgDelete.className = 'borrar';
       imgDelete.src = '/img/borrar.png';
       if (doc.data().userId === idUserActual) {
-        //console.log(idUserActual, doc.data().userId);
         imgDelete.style.display = 'block';
       } else {
         imgDelete.style.display = 'none';
       }
-
       if (doc.data().userId === idUserActual) {
-        //console.log(idUserActual, doc.data().userId);
         imgEditar.style.display = 'block';
       } else {
         imgEditar.style.display = 'none';
@@ -101,12 +85,6 @@ export function home(navigateTo) {
 
       imgLike.addEventListener('click', async () => {
         await verificarLikes(doc.id); // Espera a que verificarLikes se complete antes de continuar
-        //console.log('holamundo');
-        //const likes
-        const likes = await contarLikes(doc.id);
-        countLikes.textContent = likes; // Espera a que contarLikes se complete antes de continuar
-        console.log('Total de likes:' + likes);
-        
       });
 
       imgDelete.addEventListener('click', () => {
@@ -117,9 +95,7 @@ export function home(navigateTo) {
         if (resultado) {
           const docId = doc.id;
           deleteComment(docId);
-          //console.log('La acción se ha confirmado y el comentario ha sido eliminado.' );
         } else {
-          //console.log('La acción ha sido cancelada.');
         }
       });
       imgEditar.addEventListener('click', () => {
@@ -129,11 +105,7 @@ export function home(navigateTo) {
         divEdit.append(botonGuardarEdition);
         botonGuardarEdition.addEventListener('click', () => {
           editarComment(doc.id, postNuevo.value);
-          //console.log('entro en imgEditar', editarComment());
         });
-
-        //el campo del comentario en UI sea editable
-        //crearamos un boton y ha ese boton pasarle un evento
       });
     });
   });

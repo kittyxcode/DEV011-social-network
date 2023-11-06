@@ -24,8 +24,6 @@ import {
   arrayRemove,
   getDoc,
 } from '../firestore';
-import { async } from 'regenerator-runtime';
-import { documentId } from 'firebase/firestore';
 
 export const userAuth = () => {
   return new Promise((resolve, reject) => {
@@ -106,7 +104,7 @@ export const quitarLike = async (documentId, userId) => {
   }
 };
 
-export const verificarLikes = async(documentId) => {
+export const verificarLikes = async (documentId) => {
   // Obtén el ID del usuario actual
   const userId = localStorage.getItem('idUser'); // Reemplaza con la forma correcta de obtener el ID del usuario
 
@@ -133,26 +131,6 @@ export const verificarLikes = async(documentId) => {
     })
     .catch((error) => {
       console.error('Error al obtener el documento:', error);
-    });
-};
-
-export const contarLikes = (documentId) => {
-  const docRef = doc(db, 'post', documentId);
-
-  return getDoc(docRef)
-    .then((snapshot) => {
-      if (snapshot.exists()) {
-        const docData = snapshot.data();
-        const likes = docData.likes || [];
-        return likes.length;
-      } else {
-        console.log('El documento no existe.');
-        return 0;
-      }
-    })
-    .catch((error) => {
-      console.error('Error al obtener el documento:', error);
-      return 0; // Devuelve 0 en caso de error
     });
 };
 
