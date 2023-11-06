@@ -136,11 +136,12 @@ export const verificarLikes = async (documentId) => {
 
 const postCollection = collection(db, 'post');
 
-export const createPost = (comment) => {
+export const createPost = (comment, nombreUsuario) => {
   const idUser = localStorage.getItem('idUser');
   console.log({ idUser });
 
   addDoc(postCollection, {
+    name: nombreUsuario,
     comment,
     date: Date.now(),
     userId: idUser,
