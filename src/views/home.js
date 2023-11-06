@@ -33,7 +33,7 @@ export function home(navigateTo) {
   buttonPost.addEventListener('click', () => {
     const comment = document.querySelector('#inputPost').value;
 
-    if (comment !== '') createPost(comment);
+    if (comment !== '') createPost(comment, nameUser.textContent);
     else {
       alert('Agrega un comentario antes de enviarlo.');
     }
@@ -81,7 +81,10 @@ export function home(navigateTo) {
       imgLike.className = 'Like';
       imgLike.src = '/img/Like.png';
       postSection.append(divEdit);
-      divEdit.append(postNuevo, imgLike, countLikes, imgEditar, imgDelete);
+      const nameUsuario = document.createElement('h3');
+      nameUsuario.id= 'nameUsuario';
+      nameUsuario.textContent = doc.data().name;
+      divEdit.append(postNuevo, nameUsuario, imgLike, countLikes, imgEditar, imgDelete);
 
       imgLike.addEventListener('click', async () => {
         await verificarLikes(doc.id); // Espera a que verificarLikes se complete antes de continuar
