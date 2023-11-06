@@ -1,3 +1,4 @@
+import { async } from 'regenerator-runtime';
 import {
   createPost,
   deleteComment,
@@ -6,6 +7,8 @@ import {
   editarComment,
   darLike,
   quitarLike,
+  verificarLikes,
+  contarLikes,
 } from '../lib/index.js';
 import { userAuth } from '../lib/index.js';
 
@@ -93,9 +96,11 @@ export function home(navigateTo) {
       postSection.append(divEdit);
       divEdit.append(postNuevo, imgLike, imgEditar, imgDelete);
 
-      imgLike.addEventListener('click', () => {
-        //llamar funcion en index
-        quitarLike(doc.id, doc.data().userId);
+      imgLike.addEventListener('click', async () => {
+        await verificarLikes(doc.id); // Espera a que verificarLikes se complete antes de continuar
+        console.log('holamundo');
+        const likes = await contarLikes(doc.id); // Espera a que contarLikes se complete antes de continuar
+        console.log(`Total de likes: ${likes}`);
       });
 
       imgDelete.addEventListener('click', () => {
