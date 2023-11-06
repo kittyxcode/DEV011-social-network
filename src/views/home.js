@@ -58,6 +58,7 @@ export function home(navigateTo) {
   updateUserDisplayName();
 
   renderPostRealTime((querySnapshot) => {
+    console.log('prueba');
     post.value = '';
     postSection.textContent = '';
     querySnapshot.forEach((doc) => {
@@ -90,7 +91,7 @@ export function home(navigateTo) {
         imgEditar.style.display = 'none';
       }
       const countLikes = document.createElement('label');
-      countLikes.textContent = 0;
+      countLikes.textContent = doc.data().likes.length;
       countLikes.id = 'countLikes';
       const imgLike = document.createElement('img');
       imgLike.className = 'Like';
@@ -102,9 +103,10 @@ export function home(navigateTo) {
         await verificarLikes(doc.id); // Espera a que verificarLikes se complete antes de continuar
         //console.log('holamundo');
         //const likes
-        countLikes.textContent = await contarLikes(doc.id);
-        //countLikes.textContent = likes; // Espera a que contarLikes se complete antes de continuar
-        //console.log(`Total de likes: ${likes}`);
+        const likes = await contarLikes(doc.id);
+        countLikes.textContent = likes; // Espera a que contarLikes se complete antes de continuar
+        console.log('Total de likes:' + likes);
+        
       });
 
       imgDelete.addEventListener('click', () => {
