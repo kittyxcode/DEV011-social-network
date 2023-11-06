@@ -24,8 +24,6 @@ import {
   arrayRemove,
   getDoc,
 } from '../firestore';
-import { async } from 'regenerator-runtime';
-import { documentId } from 'firebase/firestore';
 
 export const userAuth = () => {
   return new Promise((resolve, reject) => {
@@ -106,7 +104,7 @@ export const quitarLike = async (documentId, userId) => {
   }
 };
 
-export const verificarLikes = async(documentId) => {
+export const verificarLikes = async (documentId) => {
   // Obtén el ID del usuario actual
   const userId = localStorage.getItem('idUser'); // Reemplaza con la forma correcta de obtener el ID del usuario
 

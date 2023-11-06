@@ -9,7 +9,7 @@ import {
   doc,
   deleteDoc,
   updateDoc,
-  arrayUnion, 
+  arrayUnion,
   arrayRemove,
   getDoc,
 } from 'firebase/firestore';
