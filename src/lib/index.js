@@ -136,26 +136,6 @@ export const verificarLikes = async(documentId) => {
     });
 };
 
-export const contarLikes = (documentId) => {
-  const docRef = doc(db, 'post', documentId);
-
-  return getDoc(docRef)
-    .then((snapshot) => {
-      if (snapshot.exists()) {
-        const docData = snapshot.data();
-        const likes = docData.likes || [];
-        return likes.length;
-      } else {
-        console.log('El documento no existe.');
-        return 0;
-      }
-    })
-    .catch((error) => {
-      console.error('Error al obtener el documento:', error);
-      return 0; // Devuelve 0 en caso de error
-    });
-};
-
 const postCollection = collection(db, 'post');
 
 export const createPost = (comment) => {
