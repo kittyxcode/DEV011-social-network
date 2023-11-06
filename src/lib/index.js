@@ -27,18 +27,6 @@ import {
 import { async } from 'regenerator-runtime';
 import { documentId } from 'firebase/firestore';
 
-// Agrega un observador para el estado de autenticación
-/* export const userAuth = auth.onAuthStateChanged((user) => {
-  if (user) {
-    console.log('Usuario autenticado:', user.displayName);
-    return user.displayName;
-  } else {
-    console.log('Ningún usuario autenticado');
-    return 'medio fail';
-  }
-}); */
-
-// Agrega un observador para el estado de autenticación
 export const userAuth = () => {
   return new Promise((resolve, reject) => {
     auth.onAuthStateChanged((user) => {
@@ -65,15 +53,6 @@ export const editarComment = (documentId, comment) => {
     comment: comment,
   });
 };
-
-/* export const darLike = (documentId, userId) => {
-  const x = doc(db, 'post', documentId);
-  console.log(x);
-
-  updateDoc(x, {
-    likes: firebase.firestore.FieldValue.arrayUnion(userId),
-  });
-}; */
 
 export const darLike = async (documentId, userId) => {
   const docRef = doc(db, 'post', documentId);
@@ -127,7 +106,6 @@ export const quitarLike = async (documentId, userId) => {
   }
 };
 
-
 export const verificarLikes = async(documentId) => {
   // Obtén el ID del usuario actual
   const userId = localStorage.getItem('idUser'); // Reemplaza con la forma correcta de obtener el ID del usuario
@@ -177,15 +155,6 @@ export const contarLikes = (documentId) => {
       return 0; // Devuelve 0 en caso de error
     });
 };
-
-
-// export const deletePostUser = () => {
-//   userAuth()
-//   .then((userID)) => {
-//     if (userID)
-//     postCollection
-//   }
-// }
 
 const postCollection = collection(db, 'post');
 
