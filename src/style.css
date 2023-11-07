@@ -4,229 +4,258 @@ body {
 }
 
 /* @media screen and (min-width: 375px) { */
-  #root {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-content: center;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 1.5em;
-    height: 90vh;
-  }
+#root {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 1.5em;
+  height: 90vh;
+}
 
-  .sectionlogin {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-  }
+.sectionlogin {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
 
-  .logo {
-    width: 12em;
-    display: flex;
-    margin-top: 1em;
-  }
+.logo {
+  width: 12em;
+  display: flex;
+  margin-top: 1em;
+}
 
-  .imputname {
-    font-size: 20px;
-    border: none;
-    border-bottom: solid 3px #718c6e;
-    background: transparent;
-    min-width: 330px;
-    box-sizing: border-box;
-    transition: all 0.3s linear;
-    color: #24342B;
-    font-weight: 400;
-    outline: none;
-  }
+.imputname {
+  font-size: 20px;
+  border: none;
+  border-bottom: solid 3px #718c6e;
+  background: transparent;
+  min-width: 330px;
+  box-sizing: border-box;
+  transition: all 0.3s linear;
+  color: #24342b;
+  font-weight: 400;
+  outline: none;
+}
 
-  /*Section Home*/
+/*Section Home*/
 
-  .sectionhome {
-  
-  #inputPost{
-    margin-top: 60px;
+.sectionhome {
+  #inputPost {
+    margin-top: 40px;
     font-size: 20px;
     border: none;
     border-radius: 0.9375rem;
-    background: #EDEDED;
     background-color: transparent;
+    background: #ededed;
     min-width: 300px;
-    height: 3.5625rem;
+    height: fit-content;
     box-sizing: border-box;
     display: block;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
     padding: 10px;
-
   }
 
-  .placeholder{
+  .placeholder {
     text-align: center;
     padding: 10px;
   }
-  }
-  
-.comentario-input{
-    border: none;
-    border-radius: 0.9375rem;
-    background: #EDEDED;
-    background-color: transparent;
-    min-width: 300px;
-    height: auto;
-    box-sizing: border-box;
-    display: block;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
-    margin-bottom: 10px;
-    margin-top: 20px;
-    padding: 10px;
-    font-size: medium;
-  }
-    
-    
-  /* } */
+}
 
+.comentario-input {
+  border: none;
+  border-radius: 0.9375rem;
+  background-color: transparent;
+  background: #ededed;
+  min-width: 300px;
+  height: fit-content;
+  box-sizing: border-box;
+  display: block;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: medium;
+}
 
+/* } */
 
-  #spanErrorUserStyle {
-    display: inline-block;
-    visibility: hidden;
-    background-color: #570b63; /* Color de fondo del globo */
-    color: white; /* Color del texto dentro del globo */
-    border-radius: 10px; /* Bordes redondeados para el globo */
-    padding: 10px 20px; /* Espaciado interno del globo */
-    position: relative;
-    max-width: 300px; /* Ancho máximo del globo */
-    margin-left: 0px; /* Espacio entre el globo y el elemento al que pertenece */
-    margin-top: 10px; /* Ajusta la distancia entre el globo y el elemento */
-  }
-  
-  #spanErrorUserStyle::before {
-    content: "";
-    position: absolute;
-    bottom: 100%; /* Cambiar "top" a "bottom" */
-    left: 50%;
-    margin-left: -15px; /* Posicionamiento de la punta del globo en el centro */
-    border-width: 15px;
-    border-style: solid;
-    border-color: transparent transparent #570b63 transparent; /* Cambiar el orden de los colores para que la punta apunte hacia abajo */
-    margin-top: -2px; /* Ajusta la distancia entre el triángulo y el globo */
-  }
-  
+#spanErrorUserStyle {
+  display: inline-block;
+  visibility: hidden;
+  background-color: #570b63; /* Color de fondo del globo */
+  color: white; /* Color del texto dentro del globo */
+  border-radius: 10px; /* Bordes redondeados para el globo */
+  padding: 10px 20px; /* Espaciado interno del globo */
+  position: relative;
+  max-width: 300px; /* Ancho máximo del globo */
+  margin-left: 0px; /* Espacio entre el globo y el elemento al que pertenece */
+  margin-top: 10px; /* Ajusta la distancia entre el globo y el elemento */
+}
 
-  #spanErrorPassStyle {
-    display: inline-block;
-    visibility: hidden;
-    background-color: #570b63; /* Color de fondo del globo */
-    color: white; /* Color del texto dentro del globo */
-    border-radius: 10px; /* Bordes redondeados para el globo */
-    padding: 10px 20px; /* Espaciado interno del globo */
-    position: relative;
-    max-width: 300px; /* Ancho máximo del globo */
-    margin-left: 0px; /* Espacio entre el globo y el elemento al que pertenece */
-    margin-top: 10px; /* Ajusta la distancia entre el globo y el elemento */
-  }
+#spanErrorUserStyle::before {
+  content: '';
+  position: absolute;
+  bottom: 100%; /* Cambiar "top" a "bottom" */
+  left: 50%;
+  margin-left: -15px; /* Posicionamiento de la punta del globo en el centro */
+  border-width: 15px;
+  border-style: solid;
+  border-color: transparent transparent #570b63 transparent; /* Cambiar el orden de los colores para que la punta apunte hacia abajo */
+  margin-top: -2px; /* Ajusta la distancia entre el triángulo y el globo */
+}
 
-  #spanErrorPassStyle::before {
-    content: "";
-    position: absolute;
-    bottom: 100%; /* Cambiar "top" a "bottom" */
-    left: 50%;
-    margin-left: -15px; /* Posicionamiento de la punta del globo en el centro */
-    border-width: 15px;
-    border-style: solid;
-    border-color: transparent transparent #570b63 transparent; /* Cambiar el orden de los colores para que la punta apunte hacia abajo */
-    margin-top: -2px; /* Ajusta la distancia entre el triángulo y el globo */
-  }
+#spanErrorPassStyle {
+  display: inline-block;
+  visibility: hidden;
+  background-color: #570b63; /* Color de fondo del globo */
+  color: white; /* Color del texto dentro del globo */
+  border-radius: 10px; /* Bordes redondeados para el globo */
+  padding: 10px 20px; /* Espaciado interno del globo */
+  position: relative;
+  max-width: 300px; /* Ancho máximo del globo */
+  margin-left: 0px; /* Espacio entre el globo y el elemento al que pertenece */
+  margin-top: 10px; /* Ajusta la distancia entre el globo y el elemento */
+}
 
-  .imputpass {
-    font-size: 20px;
-    border: none;
-    border-bottom: solid 3px #718c6e;
-    background: transparent;
-    min-width: 100%;
-    box-sizing: border-box;
-    transition: all 0.3s linear;
-    color: #24342B;
-    font-weight: 400;
-    outline: none;
-  }
+#spanErrorPassStyle::before {
+  content: '';
+  position: absolute;
+  bottom: 100%; /* Cambiar "top" a "bottom" */
+  left: 50%;
+  margin-left: -15px; /* Posicionamiento de la punta del globo en el centro */
+  border-width: 15px;
+  border-style: solid;
+  border-color: transparent transparent #570b63 transparent; /* Cambiar el orden de los colores para que la punta apunte hacia abajo */
+  margin-top: -2px; /* Ajusta la distancia entre el triángulo y el globo */
+}
 
-  h4 {
-    font-size: 20px;
-    font-weight: 600;
-    color: #000;
-    opacity: 0.85;
-    margin: 1.3em 0em;
-  }
-  .formlogin {
-    margin-top: 2em;
-  }
+.imputpass {
+  font-size: 20px;
+  border: none;
+  border-bottom: solid 3px #718c6e;
+  background: transparent;
+  min-width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s linear;
+  color: #24342b;
+  font-weight: 400;
+  outline: none;
+}
 
-  .googleImg {
-    width: 2em;
-  }
+h4 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+  opacity: 0.85;
+  margin: 1.3em 0em;
+}
+.formlogin {
+  margin-top: 2em;
+}
 
-  button {
-    background: #24342b;
-    color: aliceblue;
-    font-size: 20px;
-    width: auto;
-    min-width: 100px;
-    border-radius: 24px;
-    text-align: center;
-    padding: 10px 40px;
-    margin-top: 1.5em;
-  }
+.googleImg {
+  width: 2em;
+}
 
-  #buttonPost{
-    float: right;
-    border: none;
-    margin-bottom: 20px;
-  }
+button {
+  background: #24342b;
+  color: aliceblue;
+  font-size: 20px;
+  width: auto;
+  min-width: 100px;
+  border-radius: 24px;
+  text-align: center;
+  padding: 10px 40px;
+  margin-top: 1em;
+}
 
-  .createAccount {
-    position: relative;
-    top: 4em;
-    color: #6b6b6b;
-  }
-  .textp {
-    color: #718c6e;
-    margin-top: 3em;
-  }
+#buttonPost {
+  float: right;
+  border: none;
+  margin-bottom: 20px;
+}
 
-  .buttonBack {
-    width: 3em;
-    position: relative;
-    left: -9em;
-    top: -5em;
-  }
-  
-  /* Estilos botones del post para editar/borrar/dar like*/
-  .Edit {
-    width: 2em;
-    float: right;
-    margin-bottom: 1em;
-  }
-   .borrar {
-    width: 2em;
-    float: right;
-    margin-bottom: 1em;
-  } 
-  .Like {
-    width: 2em;
-    float: left;
-    margin-bottom: 1em;
-  }
-  
-  
-  
-  
-  
-  /*Estilos Create Post*/
+.createAccount {
+  position: relative;
+  top: 4em;
+  color: #6b6b6b;
+}
+.textp {
+  color: #718c6e;
+  margin-top: 3em;
+}
 
- /* .container{
+.buttonBack {
+  width: 3em;
+  position: relative;
+  left: -9em;
+  top: -5em;
+}
+
+/* Estilos botones del post para editar/borrar/dar like*/
+.Edit {
+  width: 2em;
+  float: right;
+  margin-bottom: 1em;
+  margin-left: .5em;
+  margin-right: .5em;
+}
+.borrar {
+  width: 2em;
+  float: right;
+  margin-bottom: 1em;
+}
+.Like {
+  width: 2em;
+  float: left;
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+#countLikes {
+  padding: 8px;
+  padding-top: 15px;
+  text-align: center;
+  display: inline-flex;
+}
+
+/* Estilos Div Edit*/
+
+/* #divEdit {
+  margin-top: 80px;
+} */
+
+#save {
+  width: 2em;
+  margin-bottom: 1em;
+  text-align: center;
+  border: none;
+  margin-top: 0px;
+  padding-left: 8px;
+  padding-right: 8px;
+  height: 40px;
+  margin-left: 20px;
+}
+
+/*Estilos Post Area*/
+article.post-section {
+  margin-top: 80px;
+}
+
+#nameUsuario {
+  background-color: transparent;
+  padding: 10px;
+  margin-bottom: 0px;
+
+}
+/*Estilos Create Post*/
+
+/* .container{
     width: 500px;
     height: 480px;
     overflow: hidden;
@@ -384,4 +413,3 @@ body {
   form textarea:valid ~ button:hover{
     background: #1a81ff;
   }*/
-  
