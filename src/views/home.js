@@ -1,14 +1,13 @@
-import { async } from 'regenerator-runtime';
 import {
+  userAuth,
   createPost,
   deleteComment,
   renderPostRealTime,
   editarComment,
   verificarLikes,
 } from '../lib/index.js';
-import { userAuth } from '../lib/index.js';
 
-export function home(navigateTo) {
+export function home() {
   const section = document.createElement('section');
   section.className = 'sectionhome';
   const post = document.createElement('input');
@@ -82,23 +81,28 @@ export function home(navigateTo) {
       imgLike.src = '/img/Like.png';
       postSection.append(divEdit);
       const nameUsuario = document.createElement('h3');
-      nameUsuario.id= 'nameUsuario';
+      nameUsuario.id = 'nameUsuario';
       nameUsuario.textContent = doc.data().name;
-      divEdit.append(postNuevo, nameUsuario, imgLike, countLikes, imgEditar, imgDelete);
-
+      divEdit.append(
+        postNuevo,
+        nameUsuario,
+        imgLike,
+        countLikes,
+        imgEditar,
+        imgDelete,
+      );
       imgLike.addEventListener('click', async () => {
         await verificarLikes(doc.id); // Espera a que verificarLikes se complete antes de continuar
       });
 
       imgDelete.addEventListener('click', () => {
         const resultado = window.confirm(
-          '¿Estás seguro de que deseas eliminar este comentario?'
+          '¿Estás seguro de que deseas eliminar este comentario?',
         );
 
         if (resultado) {
           const docId = doc.id;
           deleteComment(docId);
-        } else {
         }
       });
       imgEditar.addEventListener('click', () => {

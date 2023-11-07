@@ -26,11 +26,10 @@ import {
 } from '../firestore';
 
 export const userAuth = () => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         localStorage.setItem('idUser', user.uid);
-        console.log('Usuario autenticado:', user);
 
         resolve(user);
       } else {
@@ -48,7 +47,7 @@ export const deleteComment = (documentId) => {
 export const editarComment = (documentId, comment) => {
   const washingtonRef = doc(db, 'post', documentId);
   updateDoc(washingtonRef, {
-    comment: comment,
+    comment,
   });
 };
 
