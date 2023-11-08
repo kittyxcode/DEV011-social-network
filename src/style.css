@@ -34,7 +34,7 @@ body {
   border: none;
   border-bottom: solid 3px #718c6e;
   background: transparent;
-  min-width: 330px;
+  min-width: 100%;
   box-sizing: border-box;
   transition: all 0.3s linear;
   color: #24342b;
