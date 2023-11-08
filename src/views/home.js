@@ -6,7 +6,7 @@ import {
   editarComment,
   verificarLikes,
 } from '../lib/index.js';
-import edit from '../img/edit.png';
+import Edit from '../img/edit.png';
 import Borrar from '../img/borrar.png';
 import Like from '../img/Like.png';
 
@@ -61,7 +61,7 @@ export function home() {
       postNuevo.disabled = true;
       const imgEditar = document.createElement('img');
       imgEditar.className = 'Edit';
-      imgEditar.src = edit;
+      imgEditar.src = Edit;
       const idUserActual = localStorage.getItem('idUser');
       const imgDelete = document.createElement('img');
       imgDelete.className = 'borrar';
