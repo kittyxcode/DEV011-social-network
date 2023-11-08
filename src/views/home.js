@@ -84,8 +84,8 @@ export function home() {
       nameUsuario.id = 'nameUsuario';
       nameUsuario.textContent = doc.data().name;
       divEdit.append(
-        postNuevo,
         nameUsuario,
+        postNuevo,
         imgLike,
         countLikes,
         imgEditar,
@@ -109,6 +109,7 @@ export function home() {
         postNuevo.disabled = false;
         const botonGuardarEdition = document.createElement('button');
         botonGuardarEdition.textContent = 'Save';
+        botonGuardarEdition.id = 'save';
         divEdit.append(botonGuardarEdition);
         botonGuardarEdition.addEventListener('click', () => {
           editarComment(doc.id, postNuevo.value);
