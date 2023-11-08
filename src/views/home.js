@@ -6,6 +6,9 @@ import {
   editarComment,
   verificarLikes,
 } from '../lib/index.js';
+import edit from '../img/edit.png';
+import Borrar from '../img/borrar.png';
+import Like from '../img/Like.png';
 
 export function home() {
   const section = document.createElement('section');
@@ -58,11 +61,11 @@ export function home() {
       postNuevo.disabled = true;
       const imgEditar = document.createElement('img');
       imgEditar.className = 'Edit';
-      imgEditar.src = '/img/Edit.png';
+      imgEditar.src = edit;
       const idUserActual = localStorage.getItem('idUser');
       const imgDelete = document.createElement('img');
       imgDelete.className = 'borrar';
-      imgDelete.src = '/img/borrar.png';
+      imgDelete.src = Borrar;
       if (doc.data().userId === idUserActual) {
         imgDelete.style.display = 'block';
       } else {
@@ -78,7 +81,7 @@ export function home() {
       countLikes.id = 'countLikes';
       const imgLike = document.createElement('img');
       imgLike.className = 'Like';
-      imgLike.src = '/img/Like.png';
+      imgLike.src = Like;
       postSection.append(divEdit);
       const nameUsuario = document.createElement('h3');
       nameUsuario.id = 'nameUsuario';

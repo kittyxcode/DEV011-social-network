@@ -1,4 +1,6 @@
 import { ingresoUsuarioExistente, iniciarConGoogle } from '../lib';
+import Logo from '../img/logo.png';
+import GoogleLogo from '../img/google.png';
 
 export function login(navigateTo) {
   const section = document.createElement('section');
@@ -32,8 +34,8 @@ export function login(navigateTo) {
   const googleLogo = document.createElement('img');
   googleLogo.className = 'googleImg';
 
-  imagen.src = './img/logo.png';
-  googleLogo.src = './img/google.png';
+  imagen.src = Logo;
+  googleLogo.src = GoogleLogo;
 
   googleLogo.addEventListener('click', (e) => {
     e.preventDefault();

@@ -1,4 +1,6 @@
 import { crearUsuarioConCorreoYContrasena, correoValidacion } from '../lib';
+import Atras from '../img/fleachaatras.png';
+import Logo from '../img/logo.png';
 
 export function createAcount(navigateTo) {
   const section = document.createElement('section');
@@ -25,9 +27,9 @@ export function createAcount(navigateTo) {
   spanErrorPass.id = 'spanErrorPassStyle';
   const buttonSingUp = document.createElement('button');
 
-  imagen.src = './img/logo.png';
+  imagen.src = Logo;
   inputPass.type = 'password';
-  buttonBack.src = './img/fleachaatras.png';
+  buttonBack.src = Atras;
   buttonBack.addEventListener('click', () => {
     navigateTo('/');
   });
