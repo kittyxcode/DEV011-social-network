@@ -25,35 +25,25 @@ describe('prueba de Navegacion', () => {
   });
 });
 
-// describe('Ingreso de Usuario existente', () => {
-//   const mockIngresoUsuarioExistente = jest.spyOn(window, 'ingresoUsuarioExistente');
-//   mockIngresoUsuarioExistente.mockImplementation(() => ({
-//     email: 'equipo3@mail.com',
-//     password: '1234567',
-//   });
-//   const DOM = document.createElement('div');
-//   DOM.append(login('../'));
-//   const email = DOM.querySelector('inputname');
-//   const password = DOM.querySelector('inputpass');
-//   email.value = 'equipo3@mail.com';
-//   password.value = '1234567';
-//   const botonLogin = DOM.querySelector('.claseLogin');
-//   botonLogin.click();
-//   expect(mockIngresoUsuarioExistente).toHaveBeenCalledTimes(1);
-// )});
-
 describe('Ingreso de Usuario existente', () => {
-  jest.spyOn(index, 'ingresoUsuarioExistente').mockImplementation(() => ({
-    email: 'equipo3@mail.com',
-    password: '1234567',
-  }));
-  const DOM = document.createElement('div');
-  DOM.append(login('../'));
-  const email = DOM.querySelector('input[name="email"]');
-  const password = DOM.querySelector('input[name="password"]');
-  email.value = 'equipo3@mail.com';
-  password.value = '1234567';
-  const botonLogin = DOM.querySelector('.claseLogin');
-  botonLogin.click();
-  expect(index.ingresoUsuarioExistente).toHaveBeenCalledTimes(1);
+  test('Se ingresa boton login', (done) => {
+    jest.spyOn(index, 'ingresoUsuarioExistente').mockImplementation(() => ({
+      email: 'equipo3@mail.com',
+      password: '1234567',
+    }));
+    const DOM = document.createElement('div');
+    DOM.append(login());
+    const email = DOM.querySelector('#inputUserError');
+    const password = DOM.querySelector('.imputpass');
+    const error = DOM.querySelector('#spanErrorUserStyle');
+    email.value = 'equipo3@mail.com';
+    password.value = '1234567';
+    const botonLogin = DOM.querySelector('.claseLogin');
+    botonLogin.click();
+    expect(index.ingresoUsuarioExistente).toHaveBeenCalledTimes(1);
+    setTimeout(() => {
+      expect(error.classList.contains('error')).toBe(false);
+      done();
+    }, 0);
+  });
 });
