@@ -160,7 +160,7 @@ export const crearUsuarioConCorreoYContrasena = (email, password) => {
 };
 
 // eslint-disable-next-line arrow-body-style
-export const ingresoUsuarioExistente = (email, password) => {
+export const ingresoUsuarioExistente = async (email, password) => {
   return signInWithEmailAndPassword(auth, email, password);
 };
 

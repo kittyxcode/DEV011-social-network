@@ -44,29 +44,28 @@ export function login(navigateTo) {
 
   buttonLogin.textContent = 'Login';
   buttonCreate.textContent = 'Create a New Account';
-  buttonLogin.addEventListener('click', (e) => {
+  buttonLogin.addEventListener('click', async (e) => {
     e.preventDefault();
-    ingresoUsuarioExistente(inputUser.value, inputPass.value)
-      .then(() => {
-        navigateTo('/home');
-      })
-      .catch((error) => {
-        if (error.code === 'auth/invalid-email') {
-          spanErrorUser.textContent = 'Your email is not valid';
-          spanErrorUser.style.visibility = 'visible';
-        }
-        if (error.code === 'auth/invalid-login-credentials') {
-          spanErrorPass.textContent = 'Incorrect password';
-          spanErrorPass.style.visibility = 'visible';
-        }
-        if (error.code === 'auth/invalid-login-credentials') {
-          spanErrorUser.textContent = 'Your information is not valid';
-          spanErrorPass.style.visibility = 'visible';
-        }
-        // if (error.code) {
-        //   spanErrorPass.textContent= "error";
-        // }
-      });
+    try {
+      await ingresoUsuarioExistente(inputUser.value, inputPass.value);
+      navigateTo('/home');
+    } catch (error) {
+      if (error.code === 'auth/invalid-email') {
+        spanErrorUser.textContent = 'Your email is not valid';
+        spanErrorUser.style.visibility = 'visible';
+      }
+      if (error.code === 'auth/invalid-login-credentials') {
+        spanErrorPass.textContent = 'Incorrect password';
+        spanErrorPass.style.visibility = 'visible';
+      }
+      if (error.code === 'auth/invalid-login-credentials') {
+        spanErrorUser.textContent = 'Your information is not valid';
+        spanErrorPass.style.visibility = 'visible';
+      }
+      // if (error.code) {
+      //   spanErrorPass.textContent= "error";
+      // }
+    }
   });
   inputUser.addEventListener('input', (e) => {
     e.preventDefault();
